@@ -9,7 +9,7 @@
     "url": "bitovi.com"
   },
   "scripts": {
-    "test": "testee src/test.html --browsers firefox --reporter Spec",
+    "test": "testee public/test.html --browsers firefox --reporter Spec",
     "start": "http-server . --port 8080",
     "document": "documentjs",
     "build": "node build"
