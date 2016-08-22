@@ -3,14 +3,17 @@ import mocha from "steal-mocha";
 
 F.attach(mocha);
 
-describe(' functional smoke test', function(){
+describe('check texts', function(){
 	beforeEach(function(){
 		F.open('../data-cleanup.html');
 	});
 
-	it('main page shows up', function(done){
-		F('h2').text('Data Cleanup', 'Title is set');
-		F('h3:first-child').text("Jobs with no Lots", "set");
+	it('for headlines', function(done){
+		F('h2').text('Data Cleanup', 'set title right');
+		F('h3:eq(0)').text("Jobs with no Lots", "set first h3 tag right");
+		F('h3:eq(1)').text("Lots with no Tasks", "set first h3 tag right");
+		F('h3:eq(2)').text("Task Days with no Tasks", "set first h3 tag right");
+		F('h3:eq(3)').text("Foremen with no task days", "set first h3 tag right");
 		F.add(done);
 	});
 });
