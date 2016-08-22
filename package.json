@@ -54,7 +54,7 @@
     "traverse": "^0.6.6"
   },
   "devDependencies": {
-    "documentjs": "^0.3.3",
+    "documentjs": "^0.4.4",
     "done-component": "^0.4.0",
     "done-css": "^1.1.15",
     "done-serve": "^0.2.4",
