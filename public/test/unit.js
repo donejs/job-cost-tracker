@@ -1,8 +1,4 @@
-// import 'job-tracker/models/fixtures/';
-//
-// // import 'job-tracker/models/test';
-// import 'job-tracker/test/functional';
-//
+import '../components/app-nav/test/unit';
 // import 'job-tracker/components/welcome-message.component';
 // import 'job-tracker/components/app-nav/app-nav_test';
 // import 'job-tracker/components/tasks/tasks_test';
@@ -17,6 +13,3 @@
 // import 'job-tracker/components/autocomplete/autocomplete_test';
 // import 'job-tracker/components/user-login/user-login_test';
 // import 'job-tracker/components/user-manager/user-manager_test';
-
-
-import "steal-mocha";
