@@ -1,4 +1,6 @@
 import '../components/app-nav/test/unit';
+import '../components/autocomplete/test/unit';
+import '../components/custom-work-order/test/unit';
 // import 'job-tracker/components/welcome-message.component';
 // import 'job-tracker/components/app-nav/app-nav_test';
 // import 'job-tracker/components/tasks/tasks_test';
