@@ -1,5 +1,7 @@
+import '../components/app-nav/test/functional';
+import '../components/autocomplete/test/functional';
+import '../components/custom-work-order/test/functional';
 // import 'job-tracker/components/welcome-message.component';
-// import 'job-tracker/components/app-nav/app-nav_test';
 // import 'job-tracker/components/tasks/tasks_test';
 // import 'job-tracker/components/task-day/task-day_test';
 // import 'job-tracker/components/job-reports/job-reports_test';

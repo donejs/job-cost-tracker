@@ -1,5 +1,4 @@
-<title>job-tracker/components/app-nav</title>
-
+<title>job-tracker/components/custom-work-order</title>
 <div id="mocha"></div>
 
 <link rel="stylesheet" href="../../../../node_modules/mocha/mocha.css"></link>
@@ -11,12 +10,9 @@
 <script>mocha.setup('bdd')</script>
 <script>
 	steal(
-        'components/app-nav/test/unit.js',
-	    'components/app-nav/test/functional.js',
+        'components/custom-work-order/test/unit.js',
+	    'components/custom-work-order/test/functional.js',
 	    function() {
-		    mocha.checkLeaks();
-		    mocha.allowUncaught();
-		    mocha.globals(['jQuery']);
 		    mocha.run();
 	    }
     );
