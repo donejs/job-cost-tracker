@@ -5,6 +5,6 @@ const assert = chai.assert;
 describe("Test", function () {
 	it("bar", function () {
 		var vm = new ViewModel();
-		assert(vm.attr('message') === "This is the data-cleanup component", "message there");
+		assert.equal(vm.attr('message'), "This is the data-cleanup component", "message there");
 	});
 });

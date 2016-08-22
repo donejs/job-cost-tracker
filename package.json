@@ -28,6 +28,9 @@
     "directories": {
       "lib": "public"
     },
+    "paths": {
+      "chai": "node_modules/chai/chai.js"
+    },
     "configDependencies": [
       "live-reload"
     ],
@@ -54,6 +57,7 @@
     "traverse": "^0.6.6"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "documentjs": "^0.3.3",
     "done-component": "^0.4.0",
     "done-css": "^1.1.15",
