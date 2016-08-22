@@ -9,9 +9,8 @@ describe(' functional smoke test', function(){
 	});
 
 	it('main page shows up', function(done){
-		// F('h2').text('foo', 'Title is set');
-		// F('h2').text('foo', 'Title is set');
 		F('h2').text('Data Cleanup', 'Title is set');
+		F('h3:first-child').text("Jobs with no Lots", "set");
 		F.add(done);
 	});
 });

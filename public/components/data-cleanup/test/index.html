@@ -1,29 +1,15 @@
-<!--<!doctype html>-->
-<!--<html>-->
-  <!--<head>-->
-    <!--<title>job-tracker/components/data-cleanup</title>-->
-    <!--<link rel="stylesheet" href="../../../../node_modules/mocha/mocha.css"></link>-->
-  <!--</head>-->
-
-  <!--<body>-->
-    <!--<div id="mocha"></div>-->
-
-    <!--<script src="../../../../node_modules/mocha/mocha.js"></script>-->
-    <!--<script>mocha.setup('bdd')</script>-->
-    <!--<script src="../../../../node_modules/steal/steal.js" main="@empty">-->
-      <!--import 'job-tracker/components/data-cleanup/test/unit';-->
-      <!--import 'job-tracker/components/data-cleanup/test/functional';-->
-
-<!--//      mocha.checkLeaks();-->
-      <!--mocha.globals(['jQuery']);-->
-      <!--mocha.run();-->
-    <!--</script>-->
-  <!--</body>-->
-<!--</html>-->
-
-<script>FuncUnit = { frameMode: true };</script>
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>data-cleanup - Test</title>
+    <script>FuncUnit = { frameMode: true };</script>
+</head>
+<body>
 <script src="../../../../node_modules/steal/steal.js"
-        data-main="job-tracker/components/data-cleanup/test/functional">
-//    import 'job-tracker/components/data-cleanup/test/unit';
-//    import 'job-tracker/components/data-cleanup/test/functional';
+        data-main="@empty">
+    require("job-tracker/components/data-cleanup/test/unit");
+    require("job-tracker/components/data-cleanup/test/functional");
 </script>
+</body>
+</html>
