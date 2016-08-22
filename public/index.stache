@@ -13,12 +13,9 @@
 
   <can-import from="job-tracker/components/header.component" />
   <can-import from="job-tracker/components/app-nav/" />
-  <can-import from="job-tracker/components/user-login/" />
   <can-import from="job-tracker/components/data-cleanup/" />
 
-  <header>
-    <user-login class="navbar-right" {(current-user)}="currentUser" (logout)="userLogout()" ></user-login>
-  </header>
+  <header></header>
 
   <app>
     <app-nav />
