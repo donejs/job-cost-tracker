@@ -23,7 +23,8 @@
 
 <script>FuncUnit = { frameMode: true };</script>
 <script src="../../../../node_modules/steal/steal.js"
-        data-main="job-tracker/components/data-cleanup/test/functional">
-//    import 'job-tracker/components/data-cleanup/test/unit';
-//    import 'job-tracker/components/data-cleanup/test/functional';
+        main="@empty">
+   import 'job-tracker/components/data-cleanup/test/unit';
+   import 'job-tracker/components/data-cleanup/test/functional';
+   mocha.run();
 </script>
