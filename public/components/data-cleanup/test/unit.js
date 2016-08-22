@@ -1,4 +1,5 @@
 import chai from "chai";
+import "steal-mocha";
 import { ViewModel } from '../data-cleanup';
 const assert = chai.assert;
 

@@ -24,6 +24,10 @@
   ],
   "keywords": [],
   "system": {
+    "mocha": {
+      "timeout": 5000,
+      "ui": "bdd"
+    },
     "npmAlgorithm": "flat",
     "configDependencies": [
       "live-reload"
