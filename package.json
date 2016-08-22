@@ -18,9 +18,13 @@
   "files": [
     "public"
   ],
+  "engines": {
+    "node": "6.2.0"
+  },
   "keywords": [],
   "system": {
     "main": "job-tracker/api/index",
+    "npmAlgorithm": "flat",
     "directories": {
       "lib": "public"
     },
