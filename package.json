@@ -1,0 +1,66 @@
+{
+  "name": "job-tracker",
+  "version": "0.0.0",
+  "description": "Job Tracker App",
+  "homepage": "",
+  "author": {
+    "name": "Bitovi",
+    "email": "contact@bitovi.com",
+    "url": "bitovi.com"
+  },
+  "scripts": {
+    "test": "testee src/test.html --browsers firefox --reporter Spec",
+    "start": "http-server . --port 8080",
+    "document": "documentjs",
+    "build": "node build"
+  },
+  "main": "job-tracker/index.stache",
+  "files": [
+    "public"
+  ],
+  "keywords": [],
+  "system": {
+    "main": "job-tracker/api/index",
+    "directories": {
+      "lib": "public"
+    },
+    "configDependencies": [
+      "live-reload"
+    ],
+    "npmIgnore": [
+      "documentjs",
+      "testee",
+      "donejs-deploy",
+      "generator-donejs",
+      "donejs-cli"
+    ]
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "can": "^2.3.15",
+    "can-connect": "^0.3.4",
+    "can-fixture": "^0.1.1",
+    "es6-math": "^1.0.0",
+    "jquery": "2.1.4",
+    "jquery-transport-xdr": "^1.0.9",
+    "lodash": "^3.10.1",
+    "moment": "^2.11.0",
+    "pikaday": "^1.4.0",
+    "steal": "^0.13.0",
+    "traverse": "^0.6.6"
+  },
+  "devDependencies": {
+    "documentjs": "^0.3.3",
+    "done-component": "^0.4.0",
+    "done-css": "^1.1.15",
+    "done-serve": "^0.2.4",
+    "donejs-cli": "^0.5.8",
+    "donejs-deploy": "^0.3.1",
+    "funcunit": "^3.0.0",
+    "generator-donejs": "^0.4.3",
+    "http-server": "^0.8.5",
+    "steal-qunit": "^0.1.1",
+    "steal-tools": "^0.12.3",
+    "testee": "^0.2.5"
+  }
+}
