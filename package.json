@@ -14,30 +14,23 @@
     "document": "documentjs",
     "build": "node build"
   },
-  "main": "job-tracker/index.stache",
   "files": [
-    "public"
+    "."
   ],
   "engines": {
     "node": "6.2.0"
   },
   "keywords": [],
   "system": {
-    "main": "job-tracker/api/index",
+    "main": "job-tracker/index.stache!done-autorender",
     "npmAlgorithm": "flat",
     "directories": {
-      "lib": "public"
+      "lib": ""
     },
     "configDependencies": [
       "live-reload"
     ],
-    "npmIgnore": [
-      "documentjs",
-      "testee",
-      "donejs-deploy",
-      "generator-donejs",
-      "donejs-cli"
-    ]
+    "npmIgnore": []
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
@@ -50,10 +43,11 @@
     "lodash": "^3.10.1",
     "moment": "^2.11.0",
     "pikaday": "^1.4.0",
-    "steal": "^0.13.0",
+    "steal": "^0.16.0",
     "traverse": "^0.6.6"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "documentjs": "^0.4.4",
     "done-component": "^0.4.0",
     "done-css": "^1.1.15",
@@ -63,8 +57,9 @@
     "funcunit": "^3.0.0",
     "generator-donejs": "^0.4.3",
     "http-server": "^0.8.5",
-    "steal-qunit": "^0.1.1",
-    "steal-tools": "^0.12.3",
+    "mocha": "^3.0.2",
+    "steal-mocha": "0.0.3",
+    "steal-tools": "^0.16.0",
     "testee": "^0.2.5"
   }
 }
