@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "testee public/test.html --browsers firefox --reporter Spec",
-    "start": "http-server . --port 8080",
+    "start": "http-server . --port 8080 -o -d",
     "document": "documentjs",
     "build": "node build"
   },
