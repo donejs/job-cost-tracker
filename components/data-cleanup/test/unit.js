@@ -1,0 +1,12 @@
+import chai from "chai";
+import "steal-mocha";
+import { ViewModel } from '../data-cleanup';
+
+const assert = chai.assert;
+
+describe("ViewModel", function () {
+	it("has message", function () {
+		var vm = new ViewModel();
+		assert.equal(vm.attr('message'), "This is the data-cleanup component", "message there");
+	});
+});
