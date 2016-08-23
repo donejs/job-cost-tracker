@@ -37,6 +37,10 @@
     "can": "^2.3.15",
     "can-connect": "^0.3.4",
     "can-fixture": "^0.1.1",
+    "can-ssr": "^0.11.7",
+    "done-autorender": "^0.6.0",
+    "done-component": "^0.4.0",
+    "done-css": "^1.1.15",
     "es6-math": "^1.0.0",
     "jquery": "2.1.4",
     "jquery-transport-xdr": "^1.0.9",
@@ -44,14 +48,11 @@
     "moment": "^2.11.0",
     "pikaday": "^1.4.0",
     "steal": "^0.16.0",
-    "traverse": "^0.6.6"
+    "steal-socket.io": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "documentjs": "^0.4.4",
-    "done-component": "^0.4.0",
-    "done-css": "^1.1.15",
-    "done-serve": "^0.2.4",
     "donejs-cli": "^0.5.8",
     "donejs-deploy": "^0.3.1",
     "funcunit": "^3.0.0",
