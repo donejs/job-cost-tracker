@@ -25,6 +25,10 @@
   "system": {
     "main": "job-tracker/api/index",
     "npmAlgorithm": "flat",
+    "mocha": {
+      "timeout": 5000,
+      "ui": "bdd"
+    },
     "directories": {
       "lib": "public"
     },
