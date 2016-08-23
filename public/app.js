@@ -1,5 +1,6 @@
 import route from "can/route/";
 import AppMap from "can-ssr/app-map";
+import 'can/route/pushstate/';
 
 import 'can/map/define/';
 
