@@ -1,8 +1,8 @@
 import Component from 'can/component/';
 import Map from 'can/map/';
 import 'can/map/define/';
-import './date-range-picker.less!';
-import template from './date-range-picker.stache!';
+import './date-range-picker.less';
+import template from './date-range-picker.stache';
 import Pikaday from 'pikaday';
 
 export const ViewModel = Map.extend({
@@ -21,7 +21,8 @@ export default Component.extend({
   viewModel: ViewModel,
   template,
   events: {
-    inserted(el, ev) {
+    inserted: function(el, ev) {
+      console.log('fired');
       this.startpicker = new Pikaday({
         field: el.find('.report-date-start')[0],
         minDate: new Date(2000, 0, 1),
