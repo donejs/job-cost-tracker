@@ -42,21 +42,11 @@
       "donejs-cli"
     ]
   },
-  "dependencies": {
+  "devDependencies": {
     "bootstrap": "^3.3.6",
     "can": "^2.3.15",
     "can-connect": "^0.3.4",
     "can-fixture": "^0.1.1",
-    "es6-math": "^1.0.0",
-    "jquery": "2.1.4",
-    "jquery-transport-xdr": "^1.0.9",
-    "lodash": "^3.10.1",
-    "moment": "^2.11.0",
-    "pikaday": "^1.4.0",
-    "steal": "^0.13.0",
-    "traverse": "^0.6.6"
-  },
-  "devDependencies": {
     "can-ssr": "^0.11.7",
     "chai": "^3.5.0",
     "documentjs": "^0.4.4",
@@ -66,11 +56,20 @@
     "done-serve": "^0.2.4",
     "donejs-cli": "^0.5.8",
     "donejs-deploy": "^0.3.1",
-    "funcunit": "^3.0.0",
+    "es6-math": "^1.0.0",
+    "funcunit": "^3.1.0-pre.1",
     "generator-donejs": "^0.4.3",
     "http-server": "^0.8.5",
+    "jquery": "2.1.4",
+    "jquery-transport-xdr": "^1.0.9",
+    "lodash": "^3.10.1",
+    "moment": "^2.11.0",
+    "pikaday": "^1.4.0",
+    "steal": "^0.16.35",
+    "steal-mocha": "0.0.3",
     "steal-qunit": "^0.1.1",
-    "steal-tools": "^0.12.3",
-    "testee": "^0.2.5"
+    "steal-tools": "^0.16.7",
+    "testee": "^0.2.5",
+    "traverse": "^0.6.6"
   }
 }
