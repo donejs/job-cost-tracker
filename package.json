@@ -23,7 +23,7 @@
   },
   "keywords": [],
   "system": {
-    "main": "job-tracker/api/index",
+    "main": "job-tracker/index.stache",
     "npmAlgorithm": "flat",
     "mocha": {
       "timeout": 5000,
@@ -65,7 +65,6 @@
     "pikaday": "^1.4.0",
     "steal": "^0.16.35",
     "steal-mocha": "0.0.3",
-    "steal-qunit": "^0.1.1",
     "steal-tools": "^0.16.7",
     "testee": "^0.2.5",
     "traverse": "^0.6.6"
