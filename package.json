@@ -38,13 +38,7 @@
     "configDependencies": [
       "live-reload"
     ],
-    "npmIgnore": [
-      "documentjs",
-      "testee",
-      "donejs-deploy",
-      "generator-donejs",
-      "donejs-cli"
-    ]
+    "npmIgnore": []
   },
   "devDependencies": {
     "bootstrap": "^3.3.6",
