@@ -9,7 +9,7 @@
     "url": "bitovi.com"
   },
   "scripts": {
-    "test": "testee public/test.html --browsers firefox --reporter Spec",
+    "test": "testee test/test.html --browsers firefox --reporter Spec",
     "start": "http-server . --port 8080 -o -d",
     "document": "documentjs",
     "build": "node build"
@@ -22,6 +22,10 @@
   },
   "keywords": [],
   "system": {
+    "mocha": {
+      "timeout": 5000,
+      "ui": "bdd"
+    },
     "main": "job-tracker/index.stache!done-autorender",
     "npmAlgorithm": "flat",
     "directories": {
@@ -30,7 +34,22 @@
     "configDependencies": [
       "live-reload"
     ],
-    "npmIgnore": []
+    "npmIgnore": [],
+    "map": {
+      "chai": "chai/chai"
+    },
+    "paths": {
+      "auth0-lock": "vendor/auth0/lock-8.2.min.js"
+    },
+    "meta": {
+      "pikaday": {
+        "format": "cjs"
+      },
+      "auth0-lock": {
+        "format": "global",
+        "exports": "Auth0Lock"
+      }
+    }
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
