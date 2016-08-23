@@ -5,7 +5,7 @@ F.attach(mocha);
 
 describe('check texts', function(){
 	beforeEach(function(){
-		F.open('../data-cleanup.html');
+		F.open('/public/components/data-cleanup/data-cleanup.html');
 	});
 
 	it('for headlines', function(done){
