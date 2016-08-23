@@ -1,8 +1,7 @@
-import AppMap from "can-ssr/app-map";
 import route from "can/route/";
+import AppMap from "can-ssr/app-map";
+
 import 'can/map/define/';
-import 'can/route/pushstate/';
-import 'es6-math';
 
 const AppViewModel = AppMap.extend({
   define: {
@@ -24,8 +23,5 @@ const AppViewModel = AppMap.extend({
     route.attr({ page: 'home' });
   }
 });
-
-route(':page',{page: 'home'});
-
 
 export default AppViewModel;

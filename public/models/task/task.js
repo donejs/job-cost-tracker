@@ -49,6 +49,7 @@ export const taskConnection = superMap({
       return can.ajax({
         url: "/api/tasks?$populate[]=job&$populate[]=lot",
         method: "GET",
+        dataType: "json",
         data: data
       });
     },
