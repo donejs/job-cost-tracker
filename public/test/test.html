@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Job Cost Tracker - Test</title>
-    <script src="../node_modules/steal/steal.js"
-            data-mocha="bdd"
-            main="test/test"></script>
+    <title>Job Tracker Tests</title>
+    <script>FuncUnit = { frameMode: true };</script>
 </head>
-<body></body>
+<body>
+<script src="/node_modules/steal/steal.js"
+        main="@empty">
+    import "job-tracker/test/unit";
+    import "job-tracker/test/functional";
+    mocha.run();
+</script>
+</body>
 </html>
