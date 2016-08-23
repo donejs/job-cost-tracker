@@ -14,7 +14,7 @@
     "document": "documentjs",
     "build": "node build"
   },
-  "main": "job-tracker/index.stache",
+  "main": "job-tracker/main",
   "files": [
     "public"
   ],
