@@ -1,6 +1,10 @@
 <script type="text/stache" can-autorender>
   <can-import from="job-tracker/components/form-input/" />
-  <form-input></form-input>
+  <form-input {(value)}="boundThing">Input:</form-input>
+  <p>It is two-way bound:</p>
+  <form-input {(value)}="boundThing">Input:</form-input>
 </script>
-<script src="/node_modules/steal/steal.js"
-        main="can/view/autorender/"></script>
+<script src="../../../node_modules/steal/steal.js"
+        main="can/view/autorender/">
+
+</script>
