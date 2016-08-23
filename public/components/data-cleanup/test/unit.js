@@ -4,8 +4,8 @@ import { ViewModel } from '../data-cleanup';
 
 const assert = chai.assert;
 
-describe("Test", function () {
-	it("bar", function () {
+describe("ViewModel", function () {
+	it("has messsage", function () {
 		var vm = new ViewModel();
 		assert.equal(vm.attr('message'), "This is the data-cleanup component", "message there");
 	});
