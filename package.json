@@ -9,7 +9,7 @@
     "url": "bitovi.com"
   },
   "scripts": {
-    "test": "testee public/test.html --browsers firefox --reporter Spec",
+    "test": "testee public/test/test.html --browsers firefox --reporter Spec",
     "start": "http-server . --port 8080 -o -d",
     "document": "documentjs && docco public/**/*.js",
     "build": "node build"
@@ -25,19 +25,20 @@
   "system": {
     "main": "job-tracker/api/index",
     "npmAlgorithm": "flat",
+    "mocha": {
+      "timeout": 5000,
+      "ui": "bdd"
+    },
     "directories": {
       "lib": "public"
+    },
+    "paths": {
+      "chai": "node_modules/chai/chai.js"
     },
     "configDependencies": [
       "live-reload"
     ],
-    "npmIgnore": [
-      "documentjs",
-      "testee",
-      "donejs-deploy",
-      "generator-donejs",
-      "donejs-cli"
-    ]
+    "npmIgnore": []
   },
   "devDependencies": {
     "bootstrap": "^3.3.6",
@@ -45,6 +46,7 @@
     "can-connect": "^0.3.4",
     "can-fixture": "^0.1.1",
     "can-ssr": "^0.11.7",
+    "chai": "^3.5.0",
     "docco": "^0.7.0",
     "documentjs": "^0.4.4",
     "done-autorender": "^0.8.0",
