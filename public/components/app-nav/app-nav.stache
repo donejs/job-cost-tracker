@@ -2,7 +2,7 @@
     <ul>
         {{#each links}}
         <li class="{{#if activeLink(href)}}active{{/if}}">
-            <a href="{{href}}">
+            <a href="{{routeUrl(page=href)}}">
                 <span class="icon glyphicon glyphicon-{{icon}}" aria-hidden="true"></span>
                 <span class="app-nav-item-text">{{label}}</span>
             </a>
@@ -16,7 +16,7 @@
                 <ul>
                     {{#each createLinks}}
                     <li {{#if activeLink(href)}}class="active"{{/if}}>
-                        <a href="{{href}}">{{label}}</a>
+                        <a href="{{routeUrl(page=href)}}">{{label}}</a>
                     </li>
                     {{/each}}
                 </ul>
@@ -31,7 +31,7 @@
                     <ul>
                         {{#each adminLinks}}
                         <li {{#if activeLink(href)}}class="active"{{/if}}>
-                            <a href="{{href}}">{{label}}</a>
+                            <a href="{{routeUrl(page=href)}}">{{label}}</a>
                         </li>
                         {{/each}}
                     </ul>

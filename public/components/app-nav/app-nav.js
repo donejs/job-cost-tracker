@@ -10,36 +10,36 @@ export const ViewModel = Map.extend({
       value: [{
         "label": "Tasks",
         "icon": "ok", //TODO
-        "href": "/tasks"
+        "href": "tasks"
       },{
         "label": "Task Day",
         "icon": "calendar", //TODO
-        "href": "/task-day"
+        "href": "task-day"
       },{
         "label": "Reports",
         "icon": "signal", //TODO
-        "href": "/reports"
+        "href": "reports"
       }]
     },
     createLinks: {
       value: [{
         "label": "New Lot",
-        "href": "/new-lot"
+        "href": "new-lot"
       },{
         "label": "New Task Day",
-        "href": "/new-task-day"
+        "href": "new-task-day"
       },{
         "label": "Custom Work Order",
-        "href": "/custom-work-order"
+        "href": "custom-work-order"
       }]
     },
     adminLinks: {
       value: [{
         "label": "Manage Users",
-        "href": "/manage-users"
+        "href": "manage-users"
       },{
         "label": "Data Cleanup",
-        "href": "/data-cleanup"
+        "href": "data-cleanup"
       }]
     },
     popoverActive:{
