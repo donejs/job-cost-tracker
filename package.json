@@ -36,7 +36,6 @@
       "chai": "node_modules/chai/chai.js"
     },
     "configDependencies": [
-      "live-reload",
       "public/load-fixtures"
     ],
     "npmIgnore": []
