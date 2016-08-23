@@ -7,9 +7,11 @@
 </head>
 <body>
 <script src="/node_modules/steal/steal.js" main="@empty">
-    import 'job-tracker/components/data-cleanup/test/unit';
-    import 'job-tracker/components/data-cleanup/test/functional';
-    mocha.run();
+    steal(
+            'job-tracker/components/data-cleanup/test/unit.js',
+            'job-tracker/components/data-cleanup/test/functional.js'
+    );
 </script>
+
 </body>
 </html>
