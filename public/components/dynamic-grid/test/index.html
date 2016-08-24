@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>dynamic-grid - Test</title>
+      <script>FuncUnit = { frameMode: true };</script>
+  </head>
+  <body>
+    <script src="/node_modules/steal/steal.js" data-mocha-require="job-tracker/test/setup" main="@empty">
+        steal('job-tracker/components/dynamic-grid/test/unit.js',
+          'job-tracker/components/dynamic-grid/test/functional.js');
+    </script>
+  </body>
+</html>
