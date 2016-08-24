@@ -11,7 +11,8 @@
   "scripts": {
     "test": "testee public/test/test.html --browsers firefox --reporter Spec",
     "start": "browser-sync start --config bs-config.js",
-    "document": "documentjs",
+    "document": "documentjs && node scripts/gendocco.js",
+    "start": "http-server . --port 8080 -o -d",
     "build": "node build"
   },
   "main": "job-tracker/main",
@@ -49,6 +50,7 @@
     "can-ssr": "^0.11.7",
     "chai": "^3.5.0",
     "connect-history-api-fallback": "^1.3.0",
+    "docco": "^0.7.0",
     "documentjs": "^0.4.4",
     "done-autorender": "^0.8.0",
     "done-component": "^0.4.0",
