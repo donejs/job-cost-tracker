@@ -16,7 +16,7 @@
     "document": "documentjs && node scripts/gendocco.js && npm run api-docs",
     "build": "node build",
     "predeploy:docs": "git branch -D deploy-docs docs-build; git checkout -b deploy-docs",
-    "push-docs": "git add ./docs -f && git commit -m \"Updating docs\" && git push origin `git subtree split --prefix docs -b docs-build`:gh-pages --force",
+    "push-docs": "git add ./docs -f && git commit -m \"Updating docs\" && git push origin $(git subtree split --prefix docs -b docs-build):gh-pages --force",
     "deploy:docs": "npm run document && npm run push-docs; git checkout -"
   },
   "main": "job-tracker/main",
@@ -73,35 +73,8 @@
     "steal": "^0.16.35",
     "steal-mocha": "0.0.3",
     "steal-tools": "^0.16.7",
+    "swagger-ui": "^2.2.0",
     "testee": "^0.2.5",
     "traverse": "^0.6.6"
-<<<<<<< 325a9230591937aa3c5bf210092f8d0a33528ce6
-=======
-  },
-  "devDependencies": {
-    "documentjs": "^0.3.3",
-    "done-component": "^0.4.0",
-    "done-css": "^1.1.15",
-    "done-serve": "^0.2.4",
-    "donejs-cli": "^0.5.8",
-    "donejs-deploy": "^0.3.1",
-    "funcunit": "^3.0.0",
-    "generator-donejs": "^0.4.3",
-    "gh-pages-deploy": "^0.4.2",
-    "http-server": "^0.8.5",
-    "steal-qunit": "^0.1.1",
-    "steal-tools": "^0.12.3",
-    "swagger-ui": "^2.2.0",
-    "testee": "^0.2.5"
-  },
-  "gh-pages-deploy": {
-    "staticpath": "./docs",
-    "prep": [
-      "npm run document"
-    ],
-    "post": [
-    ],
-    "noprompt": false
->>>>>>> Scripts for deploying docs to gh-pages branch
   }
 }
