@@ -24,7 +24,6 @@
   "keywords": [],
   "system": {
     "main": "job-tracker/index.stache",
-    "npmAlgorithm": "flat",
     "ext": {
       "json": "system-json"
     },
@@ -74,9 +73,9 @@
     "moment": "^2.11.0",
     "pikaday": "^1.4.0",
     "sinon": "^1.17.5",
-    "steal": "^0.16.35",
+    "steal": "^1.0.0-rc.2",
     "steal-mocha": "^1.0.0-pre.0",
-    "steal-tools": "^0.16.7",
+    "steal-tools": "^1.0.0-rc.0",
     "system-json": "^0.1.0",
     "testee": "^0.2.5",
     "traverse": "^0.6.6"
