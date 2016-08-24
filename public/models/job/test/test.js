@@ -18,7 +18,7 @@ describe('models/job', () => {
       Job.getList()
         .then(function( items ) {
           assert.equal(items.length, 2);
-          assert.equal(items.attr('0.name'), "Silverwood Heights");
+          assert.equal(items[0].name, "Silverwood Heights");
           done();
         })
         .catch( done )

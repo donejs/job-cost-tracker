@@ -18,7 +18,7 @@ describe('models/task-day', () => {
       TaskDay.getList()
         .then(function( items ) {
           assert.equal(items.length, 3, 'There are 3 items retrieved');
-          assert.equal(items.attr('0.notes'), 'Some notes for the NEW day', 'The first item is for Jan 18 2016');
+          assert.equal(items[0].notes, 'Some notes for the NEW day', 'The first item is for Jan 18 2016');
           done();
         })
         .catch( done )

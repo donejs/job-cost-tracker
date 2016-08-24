@@ -18,7 +18,7 @@ describe('models/task', () => {
       Task.getList()
         .then(function( items ) {
           assert.equal(items.length, 9);
-          assert.equal(items.attr('0.name'), 'Driveway');
+          assert.equal(items[0].name, 'Driveway');
           done();
         })
         .catch( done )

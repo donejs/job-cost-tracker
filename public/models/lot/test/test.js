@@ -18,7 +18,7 @@ describe('models/lot', () => {
       Lot.getList()
         .then(function( items ) {
           assert.equal(items.length, 5);
-          assert.equal(items.attr('0.name'), "The big one");
+          assert.equal(items[0].name, "The big one");
           done();
         })
         .catch( done )
