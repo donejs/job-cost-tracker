@@ -1,0 +1,9 @@
+<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Bitovi</a>
+    <h4 class="navbar-text">Job Tracker</h4>
+
+    <content>
+
+  </div>
+</nav>

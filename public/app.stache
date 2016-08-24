@@ -1,11 +1,11 @@
 <can-import from="bootstrap/less/bootstrap.less!" />
 <can-import from="job-tracker/styles.less!" />
 
-<can-import from="job-tracker/components/header.component" />
+<can-import from="job-tracker/components/header/" />
 <can-import from="job-tracker/components/app-nav/" />
 <can-import from="job-tracker/components/data-cleanup/" />
 
-<header></header>
+<header />
 
 <app>
   <app-nav />
