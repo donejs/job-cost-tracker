@@ -17,7 +17,7 @@ Foreman.List = can.List.extend({
 
 export const foremanConnection = superMap({
   url: {
-    getListData: function(req){
+    getListData: function(req = {}){
       var data = '';
       if(req.search){
         req['$search'] = {

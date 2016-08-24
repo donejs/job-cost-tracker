@@ -26,7 +26,6 @@ module.exports = {
     "middleware": [ historyApiFallback() ],
     "serveStatic": [
         'public',
-        'node_modules',
         './'
     ]
 };
