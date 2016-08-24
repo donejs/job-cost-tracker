@@ -35,6 +35,7 @@ export const lotConnection = superMap({
       return can.ajax({
         url: "/api/lots?$populate[]=tasks",
         method: "GET",
+        dataType: "json",
         data: req
       });
     },
