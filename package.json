@@ -12,7 +12,6 @@
     "test": "testee public/test/test.html --browsers firefox --reporter Spec",
     "start": "browser-sync start --config bs-config.js",
     "document": "documentjs && node scripts/gendocco.js",
-    "start": "http-server . --port 8080 -o -d",
     "build": "node build"
   },
   "main": "job-tracker/main",
