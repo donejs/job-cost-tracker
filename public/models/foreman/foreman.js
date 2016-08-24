@@ -1,21 +1,20 @@
 import can from 'can';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
-import 'can/map/define/define';
+import DefineMap from 'can-define/map/';
+import DefineList from 'can-define/list/';
 
-export const Foreman = can.Map.extend({
-  define: {
-  	name: {
-  		type: 'string'
-  	}
-  }
+const Foreman = DefineMap.extend('Foreman', {
+	name: {
+		type: 'string'
+	}
 });
 
-Foreman.List = can.List.extend({
-  Map: Foreman
-}, {});
+const ForemanList = DefineList.extend({
+  '*': { Type: Foreman }
+});
 
-export const foremanConnection = superMap({
+const foremanConnection = superMap({
   url: {
     getListData: function(req = {}){
       var data = '';
@@ -41,10 +40,11 @@ export const foremanConnection = superMap({
   },
   idProp: 'id',
   Map: Foreman,
-  List: Foreman.List,
+  List: ForemanList,
   name: 'foreman'
 });
 
 tag('foreman-model', foremanConnection);
 
 export default Foreman;
+export { ForemanList, foremanConnection };

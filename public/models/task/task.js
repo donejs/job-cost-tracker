@@ -1,26 +1,24 @@
 import can from 'can';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
-import 'can/map/define/define';
+import DefineMap from 'can-define/map/';
+import DefineList from 'can-define/list/';
 import Job from 'job-tracker/models/job/';
 import Lot from 'job-tracker/models/lot/';
 
-export const Task = can.Map.extend({
-  define: {
-    name: { type: 'string' },
-    hours: { type: 'number' },
-    cubicYards: { type: 'number' },
-    tons: { type: 'number' },
-    notes: { type: 'string' },
-    completed: { type: 'date' },
-    Job: { Type: Job },
-    Lot: { Type: Lot }
-  }
+const Task = DefineMap.extend('Task', {
+  name: { type: 'string' },
+  hours: { type: 'number' },
+  cubicYards: { type: 'number' },
+  tons: { type: 'number' },
+  notes: { type: 'string' },
+  completed: { type: 'date' },
+  Job: { Type: Job },
+  Lot: { Type: Lot }
 });
 
-Task.List = can.List.extend({
-  Map: Task
-}, {
+const TaskList = DefineList.extend('TaskList', {
+  '*': { Type: Task },
   totals: function(){
     var totals = {
       cubicYards: 0,
@@ -38,7 +36,7 @@ Task.List = can.List.extend({
   }
 });
 
-export const taskConnection = superMap({
+const taskConnection = superMap({
   parseListData: function(data){
     data.current = Math.floor(data.skip / data.limit) + 1;
     data.pages = Math.ceil(data.total / data.limit);
@@ -109,10 +107,11 @@ export const taskConnection = superMap({
     }
   },
   Map: Task,
-  List: Task.List,
+  List: TaskList,
   name: 'task'
 });
 
 tag('task-model', taskConnection);
 
 export default Task;
+export { TaskList, taskConnection };
