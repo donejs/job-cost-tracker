@@ -1,3 +1,5 @@
+<can-import from="bootstrap/less/bootstrap.less!" />
+
 <nav>
     <ul>
         {{#each links}}
