@@ -86,10 +86,8 @@ export const ViewModel = Map.extend({
 	 *
 	 * @body
 	 * Use in a template like:
-	 * ```
-	 * {{#each links}}
-   *   <li class="{{#if activeLink(href)}}active{{/if}}">{{label}}</li>
-   * {{/each}}
+   * ```
+	 * activeLink(href)
 	 * ```
 	 */
   activeLink: function(href, currentPage) {
