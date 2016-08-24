@@ -1,34 +1,71 @@
-import Component from 'can/component/';
 import Map from 'can/map/';
-import 'can/map/define/';
-import './custom-work-order.less!';
-import template from './custom-work-order.stache!';
-import Task from 'job-tracker/models/task/';
+import Component from 'can/component/';
 import Job from 'job-tracker/models/job/';
-import Lot from 'job-tracker/models/lot/';
+import Task from 'job-tracker/models/task/';
+import template from './custom-work-order.stache!';
 
+import 'can/map/define/';
+
+/**
+ * @module {Module} job-tracker/components/custom-work-order <custom-work-order>
+ * @parent job-tracker.components
+ *
+ * @signature `<custom-work-order />`
+ * @demo public/components/custom-work-order/custom-work-order.html
+ *
+ * Form used to create custom tasks
+ **/
 export const ViewModel = Map.extend({
   define: {
-    task: {
-      Type: Task,
-      // prevent weird bug where it re-renders component
-      // when values are initially changed
-      value: {
-        name: '',
-        hours: 0,
-        cubicYards: 0,
-        tons: 0,
-        notes: ''
-      }
-    },
-    lotId: {
-      value: ''
-    },
-    jobId: {
-      value: ''
-    },
     saving: {
       value: false
+    },
+    selectedJobId: {
+      value: ''
+    },
+    selectedLotId: {
+      value: ''
+    },
+    jobsPromise: {
+      get() {
+        return Job.getList({});
+      }
+    },
+    jobs: {
+      get(lastVal, setVal) {
+        this.attr('jobsPromise').then(setVal);
+      }
+    },
+    selectedJob: {
+      get() {
+        const jobId = this.attr('selectedJobId');
+
+        return this.attr('jobs')
+          .filter(job => job.attr('id') === jobId)
+          .attr(0);
+      }
+    },
+    selectedJobLots: {
+      get() {
+        const selectedJob = this.attr('selectedJob');
+
+        return selectedJob ? selectedJob.attr('lots') : [];
+      }
+    },
+    task: {
+      Type: Task,
+
+      value() {
+        // prevent weird bug where it re-renders component
+        // when values are initially changed
+        return {
+          name: '',
+          hours: 0,
+          cubicYards: 0,
+          tons: 0,
+          notes: ''
+        };
+      }
     }
   },
   submitOrder() {
@@ -37,24 +74,19 @@ export const ViewModel = Map.extend({
       job: this.attr('jobId')
     });
 
-    this.attr('saving',
-      this.attr('task').save()
-    );
+    this.attr({
+      saving: this.attr('task').save(),
+      task: new Task({}),
+      selectedJobId: '',
+      selectedLotId: ''
+    });
 
-    this.attr('task', new Task({}));
-    this.attr('jobId', '');
-    this.attr('lotId', '');
+    return false;
   }
 });
 
 export default Component.extend({
   tag: 'custom-work-order',
   viewModel: ViewModel,
-  template,
-  events: {
-    'form.custom-work-order-form submit': function(el, ev){
-      ev.preventDefault();
-      this.viewModel.submitOrder();
-    }
-  }
+  template
 });
