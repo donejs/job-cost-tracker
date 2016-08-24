@@ -45,14 +45,15 @@ export const taskConnection = superMap({
     return data;
   },
   url: {
-    getListData: function(data){
+    getListData: function(data = {}){
       return can.ajax({
         url: "/api/tasks?$populate[]=job&$populate[]=lot",
         method: "GET",
+        dataType: "json",
         data: data
       });
     },
-    getData: function(data){
+    getData: function(data = {}){
       var id = data.id;
 
       delete data.id;

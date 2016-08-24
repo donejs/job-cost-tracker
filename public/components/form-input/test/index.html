@@ -2,16 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>data-cleanup - Test</title>
+    <title>form-input - Test</title>
     <script>FuncUnit = { frameMode: true };</script>
 </head>
 <body>
 <script src="/node_modules/steal/steal.js" main="@empty">
-    steal(
-            'job-tracker/components/data-cleanup/test/unit.js',
-            'job-tracker/components/data-cleanup/test/functional.js'
-    );
+    import 'job-tracker/components/form-input/test/unit';
+    import 'job-tracker/components/form-input/test/functional';
+    mocha.run();
 </script>
-
 </body>
 </html>

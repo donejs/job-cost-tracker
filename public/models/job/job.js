@@ -7,7 +7,7 @@ import Lot from 'job-tracker/models/lot/';
 export const Job = can.Map.extend({
   define: {
     name: { type: 'string' },
-    lots: { 
+    lots: {
     	Type: Lot.List,
     	value: []
     }
@@ -20,7 +20,7 @@ Job.List = can.List.extend({
 
 export const jobConnection = superMap({
   url: {
-    getListData: function(req){
+    getListData: function(req = {}){
       var data = '';
       if(req && req.search){
         req['$search'] = {
@@ -38,7 +38,8 @@ export const jobConnection = superMap({
       return can.ajax({
         url: "/api/jobs?$populate[]=lots",
         method: "GET",
-        data: req
+        data: req,
+        dataType: "json"
       });
     },
     getData: "GET /api/jobs/{id}?$populate[]=lots",

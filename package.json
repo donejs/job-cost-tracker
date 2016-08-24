@@ -10,11 +10,11 @@
   },
   "scripts": {
     "test": "testee public/test/test.html --browsers firefox --reporter Spec",
-    "start": "http-server . --port 8080",
-    "document": "documentjs",
+    "start": "browser-sync start --config bs-config.js",
+    "document": "documentjs && node scripts/gendocco.js",
     "build": "node build"
   },
-  "main": "job-tracker/index.stache",
+  "main": "job-tracker/main",
   "files": [
     "public"
   ],
@@ -23,8 +23,11 @@
   },
   "keywords": [],
   "system": {
-    "main": "job-tracker/api/index",
+    "main": "job-tracker/index.stache",
     "npmAlgorithm": "flat",
+    "ext": {
+      "json": "system-json"
+    },
     "mocha": {
       "timeout": 5000,
       "ui": "bdd"
@@ -36,17 +39,20 @@
       "chai": "node_modules/chai/chai.js"
     },
     "configDependencies": [
-      "live-reload"
+      "public/load-fixtures"
     ],
     "npmIgnore": []
   },
   "devDependencies": {
     "bootstrap": "^3.3.6",
+    "browser-sync": "^2.14.0",
     "can": "^2.3.15",
     "can-connect": "^0.3.4",
-    "can-fixture": "^0.1.1",
+    "can-fixture": "^0.3.2",
     "can-ssr": "^0.11.7",
     "chai": "^3.5.0",
+    "connect-history-api-fallback": "^1.3.0",
+    "docco": "^0.7.0",
     "documentjs": "^0.4.4",
     "done-autorender": "^0.8.0",
     "done-component": "^0.4.0",
@@ -57,7 +63,6 @@
     "es6-math": "^1.0.0",
     "funcunit": "^3.1.0-pre.1",
     "generator-donejs": "^0.4.3",
-    "http-server": "^0.8.5",
     "jquery": "2.1.4",
     "jquery-transport-xdr": "^1.0.9",
     "lodash": "^3.10.1",
@@ -65,8 +70,8 @@
     "pikaday": "^1.4.0",
     "steal": "^0.16.35",
     "steal-mocha": "0.0.3",
-    "steal-qunit": "^0.1.1",
     "steal-tools": "^0.16.7",
+    "system-json": "^0.1.0",
     "testee": "^0.2.5",
     "traverse": "^0.6.6"
   }
