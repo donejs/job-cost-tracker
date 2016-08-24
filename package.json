@@ -11,7 +11,7 @@
   "scripts": {
     "test": "testee public/test/test.html --browsers firefox --reporter Spec",
     "start": "http-server . --port 8080 -o -d",
-    "document": "documentjs && docco public/**/*.js",
+    "document": "documentjs && node scripts/gendocco.js",
     "build": "node build"
   },
   "main": "job-tracker/index.stache",
