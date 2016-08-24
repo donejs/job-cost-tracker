@@ -20,7 +20,7 @@ Job.List = can.List.extend({
 
 export const jobConnection = superMap({
   url: {
-    getListData: function(req){
+    getListData: function(req = {}){
       var data = '';
       if(req && req.search){
         req['$search'] = {

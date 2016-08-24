@@ -25,6 +25,9 @@
   "system": {
     "main": "job-tracker/index.stache",
     "npmAlgorithm": "flat",
+    "ext": {
+      "json": "system-json"
+    },
     "mocha": {
       "timeout": 5000,
       "ui": "bdd"
@@ -68,6 +71,7 @@
     "steal": "^0.16.35",
     "steal-mocha": "0.0.3",
     "steal-tools": "^0.16.7",
+    "system-json": "^0.1.0",
     "testee": "^0.2.5",
     "traverse": "^0.6.6"
   }
