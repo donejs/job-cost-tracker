@@ -22,7 +22,6 @@ export default Component.extend({
   template,
   events: {
     inserted: function(el, ev) {
-      console.log('fired');
       this.startpicker = new Pikaday({
         field: el.find('.report-date-start')[0],
         minDate: new Date(2000, 0, 1),
