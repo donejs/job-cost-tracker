@@ -17,7 +17,7 @@ Foreman.List = can.List.extend({
 
 export const foremanConnection = superMap({
   url: {
-    getListData: function(req){
+    getListData: function(req = {}){
       var data = '';
       if(req.search){
         req['$search'] = {
@@ -30,7 +30,8 @@ export const foremanConnection = superMap({
       return can.ajax({
         url: '/api/foremen',
         method: 'GET',
-        data: req
+        data: req,
+        dataType: "json"
       });
     },
     getData: 'GET /api/foremen/{id}',

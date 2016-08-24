@@ -17,7 +17,7 @@ Lot.List = can.List.extend({
 
 export const lotConnection = superMap({
   url: {
-    getListData: function(req){
+    getListData: function(req = {}){
       var data = '';
       if(req.search){
         req['$search'] = {
@@ -35,6 +35,7 @@ export const lotConnection = superMap({
       return can.ajax({
         url: "/api/lots?$populate[]=tasks",
         method: "GET",
+        dataType: "json",
         data: req
       });
     },
