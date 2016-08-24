@@ -1,5 +1,5 @@
-<can-import from="bootstrap/less/bootstrap.less!" />
-<can-import from="pikaday/css/pikaday.css!" />
+<can-import from="bootstrap/less/bootstrap.less" />
+<can-import from="pikaday/css/pikaday.css" />
 <can-import from="job-tracker/components/date-range-picker/date-range-picker.less" />
 
 <div class="form-group has-feedback">
@@ -7,8 +7,8 @@
   <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
   <span id="inputReportStartDateDesc" class="sr-only">(start date)</span>
 </div>
+<p class="form-control-static">to</p>
 <div class="form-group has-feedback">
-  <p class="form-control-static">to</p>
   <input {^$value}="endDate" type="text" placeholder="End: mm/dd/yyyy" class="form-control report-date-end" aria-describedby="inputReportEndDateDesc">
   <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
   <span id="inputReportEndDateDesc" class="sr-only">(end date)</span>
