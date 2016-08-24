@@ -1,7 +1,8 @@
 import can from 'can';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
-import 'can/map/define/define';
+import DefineMap from 'can-define/map/';
+import DefineList from 'can-define/list/';
 
 class TokenStore {
   constructor({ key="id_token" } = {}) {
@@ -27,7 +28,7 @@ function beforeSend(xhr) {
 }
 $.ajaxSetup({ beforeSend });
 
-export const User = can.Map.extend({
+const User = DefineMap.extend('User', {
   tokenStore: new TokenStore(),
   authenticateUserWithtoken(id_token) {
     if (!id_token) {
@@ -58,43 +59,41 @@ export const User = can.Map.extend({
     return userConnection.getData({ user_id: 'current-user' })
   }
 }, {
-  define: {
-    isAdmin: {
-      get() {
-        let roles = this.attr('roles');
-        return roles && roles.filter(role => role.toLowerCase() === 'admin').length > 0;
-      },
-      set(newVal) {
-        let roles = this.attr('roles');
-        if (!roles) {
-          roles = new can.List();
-        }
-        if (newVal) {
-          if (roles.indexOf('admin') === -1) {
-            roles.push('admin');
-          }
-        } else {
-          if (roles.indexOf('admin') !== -1) {
-            roles = roles.filter(role => role !== 'admin');
-          }
-        }
-        this.attr('roles', roles);
-        this.save();
-      }
+  isAdmin: {
+    get() {
+      let roles = this.attr('roles');
+      return roles && roles.filter(role => role.toLowerCase() === 'admin').length > 0;
     },
-    provider: {
-      get() {
-        let user_id = this.attr('user_id');
-        let provider = user_id.substring(0, user_id.indexOf('|'));
-        return provider;
+    set(newVal) {
+      let roles = this.attr('roles');
+      if (!roles) {
+        roles = new can.List();
       }
+      if (newVal) {
+        if (roles.indexOf('admin') === -1) {
+          roles.push('admin');
+        }
+      } else {
+        if (roles.indexOf('admin') !== -1) {
+          roles = roles.filter(role => role !== 'admin');
+        }
+      }
+      this.attr('roles', roles);
+      this.save();
+    }
+  },
+  provider: {
+    get() {
+      let user_id = this.attr('user_id');
+      let provider = user_id.substring(0, user_id.indexOf('|'));
+      return provider;
     }
   }
 });
 
-User.List = can.List.extend({
-  Map: User
-}, {});
+const UserList = DefineList.extend('UserList', {
+  '*': { Type: User }
+});
 
 export const userConnection = superMap({
   url: {
@@ -116,10 +115,11 @@ export const userConnection = superMap({
   },
   idProp: 'user_id',
   Map: User,
-  List: User.List,
+  List: UserList,
   name: 'user'
 });
 
 tag('user-model', userConnection);
 
 export default User;
+export { UserList, userConnection };

@@ -18,7 +18,7 @@ describe('models/report', () => {
       Report.getList()
         .then(function( items ) {
           assert.equal(items.length, 2);
-          assert.equal(items.attr('0.description'), 'First item');
+          assert.equal(items[0].description, 'First item');
           done();
         })
         .catch( done )

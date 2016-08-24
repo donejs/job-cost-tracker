@@ -1,7 +1,8 @@
 import can from 'can';
 import tag from 'can-connect/can/tag/';
 import superMap from 'job-tracker/models/superMap';
-import 'can/map/define/define';
+import DefineMap from 'can-define/map/';
+import DefineList from 'can-define/list/';
 import isNumber from 'lodash/isNumber';
 import Task from 'job-tracker/models/task/';
 import moment from 'moment';
@@ -15,88 +16,85 @@ function diffValue(val1, val2) {
   return null;
 }
 
-export const TaskDay = can.Map.extend({
-  define: {
-    job: { type: undefined },
-    notes: { type: 'string', value: '' },
-    completed: {
-      type(val){
-        return moment(val, moment.ISO_8601);
-      },
-      serialize(currentVal) {
-        if (moment.isMoment(currentVal)) {
-          return currentVal.format();
-        }
-        return currentVal;
+const TaskDay = DefineMap.extend('Task', {
+  job: { type: undefined },
+  notes: { type: 'string', value: '' },
+  completed: {
+    type(val){
+      return moment(val, moment.ISO_8601);
+    },
+    serialize(currentVal) {
+      if (moment.isMoment(currentVal)) {
+        return currentVal.format();
       }
-    },
-    foreman: { type: undefined },
-    completedTasks: {
-      Type: Task.List,
-      value: []
-    },
-    hours: { type: 'number' },
-    allocatedHours: {
-      get(){
-        return this.attr('totals').hours;
-      }
-    },
-    hoursDiff: {
-      get() {
-        return diffValue(this.attr('hours'), this.attr('allocatedHours'));
-      }
-    },
+      return currentVal;
+    }
+  },
+  foreman: { type: undefined },
+  completedTasks: {
+    Type: Task.List,
+    value: []
+  },
+  hours: { type: 'number' },
+  allocatedHours: {
+    get(){
+      return this.attr('totals').hours;
+    }
+  },
+  hoursDiff: {
+    get() {
+      return diffValue(this.attr('hours'), this.attr('allocatedHours'));
+    }
+  },
 
-    cubicYards: { type: 'number' },
-    allocatedCubicYards: {
-      get(){
-        return this.attr('totals').cubicYards;
-      }
-    },
-    cubicYardsDiff: {
-      get() {
-        return diffValue(this.attr('cubicYards'), this.attr('allocatedCubicYards'));
-      }
-    },
+  cubicYards: { type: 'number' },
+  allocatedCubicYards: {
+    get(){
+      return this.attr('totals').cubicYards;
+    }
+  },
+  cubicYardsDiff: {
+    get() {
+      return diffValue(this.attr('cubicYards'), this.attr('allocatedCubicYards'));
+    }
+  },
 
-    tons: { type: 'number' },
-    allocatedTons: {
-      get(){
-        return this.attr('totals').tons;
-      }
-    },
-    tonsDiff: {
-      get() {
-        return diffValue(this.attr('tons'), this.attr('allocatedTons'));
-      }
-    },
-    totals: {
-      get() {
-        var completed = this.attr('completedTasks'),
-            totals = {
-              hours: 0,
-              cubicYards: 0,
-              tons: 0
-            };
+  tons: { type: 'number' },
+  allocatedTons: {
+    get(){
+      return this.attr('totals').tons;
+    }
+  },
+  tonsDiff: {
+    get() {
+      return diffValue(this.attr('tons'), this.attr('allocatedTons'));
+    }
+  },
+  totals: {
+    get() {
+      var completed = this.attr('completedTasks'),
+          totals = {
+            hours: 0,
+            cubicYards: 0,
+            tons: 0
+          };
 
-        completed.each(function(val){
-          totals.hours += val.hours;
-          totals.cubicYards += val.cubicYards;
-          totals.tons += val.tons;
-        });
+      completed.each(function(val){
+        totals.hours += val.hours;
+        totals.cubicYards += val.cubicYards;
+        totals.tons += val.tons;
+      });
 
-        return totals;
-      }
+      return totals;
     }
   }
 });
 
-TaskDay.List = can.List.extend({
-  Map: TaskDay
-}, {
+const TaskDayList = DefineList.extend('TaskDayList', {
+  '*': { Type: TaskDay }
 });
 
-export const taskDayConnection = superMap({
+const taskDayConnection = superMap({
   parseListData: function(data){
     data.current = Math.floor(data.skip / data.limit) + 1;
     data.pages = Math.ceil(data.total / data.limit);
@@ -140,10 +138,11 @@ export const taskDayConnection = superMap({
     }
   },
   Map: TaskDay,
-  List: TaskDay.List,
+  List: TaskDayList,
   name: 'taskDay'
 });
 
 tag('task-day-model', taskDayConnection);
 
 export default TaskDay;
+export { TaskDayList, taskDayConnection };

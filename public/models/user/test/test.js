@@ -18,7 +18,7 @@ describe('models/user', () => {
       User.getList()
         .then(function( items ) {
           assert.equal(items.length, 8);
-          assert.equal(items.attr('0.email'), 'adam@bitovi.com');
+          assert.equal(items[0].email, 'adam@bitovi.com');
           done();
         })
         .catch( done )

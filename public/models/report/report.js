@@ -1,14 +1,14 @@
 import can from 'can';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
-import 'can/map/define/define';
+import DefineList from 'can-define/list/';
 import TaskDay from 'job-tracker/models/task-day/';
 
-export const Report = TaskDay.extend({});
+const Report = TaskDay.extend('Report', {});
 
-Report.List = can.List.extend({
-  Map: Report
-}, {});
+const ReportList = DefineList.extend('ReportList', {
+  '*': { Type: Report }
+});
 
 export const reportConnection = superMap({
   url: {
@@ -16,10 +16,11 @@ export const reportConnection = superMap({
   },
   idProp: 'id',
   Map: Report,
-  List: Report.List,
+  List: ReportList,
   name: 'report'
 });
 
 tag('report-model', reportConnection);
 
 export default Report;
+export { ReportList, reportConnection };

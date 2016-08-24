@@ -1,24 +1,23 @@
 import can from 'can';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
-import 'can/map/define/define';
+import DefineMap from 'can-define/map/';
+import DefineList from 'can-define/list/';
 import Lot from 'job-tracker/models/lot/';
 
-export const Job = can.Map.extend({
-  define: {
-    name: { type: 'string' },
-    lots: {
-    	Type: Lot.List,
-    	value: []
-    }
+const Job = DefineMap.extend('Job', {
+  name: { type: 'string' },
+  lots: {
+  	Type: Lot.List,
+  	value: []
   }
 });
 
-Job.List = can.List.extend({
-  Map: Job
-}, {});
+const JobList = DefineList.extend('JobList', {
+  '*': { Type: Job }
+});
 
-export const jobConnection = superMap({
+const jobConnection = superMap({
   url: {
     getListData: function(req = {}){
       var data = '';
@@ -64,10 +63,11 @@ export const jobConnection = superMap({
     destroyData: "DELETE /api/jobs/{id}"
   },
   Map: Job,
-  List: Job.List,
+  List: JobList,
   name: 'job'
 });
 
 tag('job-model', jobConnection);
 
 export default Job;
+export { JobList, jobConnection };

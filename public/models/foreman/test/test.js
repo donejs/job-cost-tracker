@@ -18,7 +18,7 @@ describe('models/foreman', () => {
       Foreman.getList()
         .then(function(items) {
           assert.equal(items.length, 2, 'Retrieved 2 items');
-          assert.equal(items.attr('0.name'), 'Solomon Grundy');
+          assert.equal(items[0].name, 'Solomon Grundy');
           done();
         })
         .catch(done);
