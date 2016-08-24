@@ -2,10 +2,8 @@ import chai from "chai";
 import F from 'funcunit';
 import mocha from "steal-mocha";
 
-
 import canStache from "can/view/stache/";
 import '../date-range-picker';
-
 import moment from "moment";
 
 const assert = chai.assert;
