@@ -11,37 +11,10 @@ const assert = chai.assert;
 F.attach(mocha);
 
 describe('pikaday', function(){
-	// let divID = 'test-area';
-	// let testArea = document.getElementById(divID);
-
 	beforeEach(function(){
-		// let renderer = canStache('<date-range-picker></date-range-picker>');
-		//
-		// testArea.appendChild(renderer({}));
-	//
-	// 	let body = document.getElementsByTagName('body');
-	// 	let test = document.createElement("div");
-	// 	test.setAttribute("id", "funcunit-test-area");
-	// 	body[0].appendChild(test);
 		F.open('/public/components/date-range-picker/date-range-picker.html');
+		// wait until the component is append by done-autorender
 		F('date-range-picker').exists();
-	});
-
-	afterEach(function () {
-		// let foo = document.getElementById("funcunit_app");
-		// foo.contentDocument.body.innerHTML = "";
-
-
-		// testArea.innerHTML = '';
-		// let foo = document.getElementById("funcunit_app");
-		// let bar = document.getElementsByTagName('body');
-		// bar[0].removeChild(foo);
-		//
-		// let test = document.createElement("iframe");
-		// test.setAttribute("id", "funcunit_app");
-		// test.setAttribute('src', '');
-		// bar[0].appendChild(test);
-
 	});
 
 	it('for the end date', function(done){
