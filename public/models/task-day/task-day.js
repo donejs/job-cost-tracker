@@ -2,7 +2,7 @@ import can from 'can';
 import tag from 'can-connect/can/tag/';
 import superMap from 'job-tracker/models/superMap';
 import 'can/map/define/define';
-import isNumber from 'lodash/lang/isNumber';
+import isNumber from 'lodash/isNumber';
 import Task from 'job-tracker/models/task/';
 import moment from 'moment';
 
