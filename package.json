@@ -29,7 +29,7 @@
       "json": "system-json"
     },
     "mocha": {
-      "timeout": 5000,
+      "timeout": 10000,
       "ui": "bdd"
     },
     "directories": {
@@ -65,9 +65,10 @@
     "generator-donejs": "^0.4.3",
     "jquery": "2.1.4",
     "jquery-transport-xdr": "^1.0.9",
-    "lodash": "^3.10.1",
+    "lodash": "^4.15.0",
     "moment": "^2.11.0",
     "pikaday": "^1.4.0",
+    "sinon": "^1.17.5",
     "steal": "^0.16.35",
     "steal-mocha": "0.0.3",
     "steal-tools": "^0.16.7",
