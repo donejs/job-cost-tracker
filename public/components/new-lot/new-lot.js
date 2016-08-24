@@ -9,8 +9,8 @@ import 'can/map/define/';
 import Job from 'job-tracker/models/job/';
 import Lot from 'job-tracker/models/lot/';
 import Task from 'job-tracker/models/task/';
-import './new-lot.less!';
-import template from './new-lot.stache!';
+import './new-lot.less';
+import template from './new-lot.stache';
 
 
 /**
