@@ -1,0 +1,17 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+
+        }
+    },
+    "rules": {
+        "semi": 2,
+        "bdd/focus": 2,
+        "bdd/exclude": 2
+    },
+    "plugins": [
+        "bdd"
+    ]
+}

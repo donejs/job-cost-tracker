@@ -29,7 +29,7 @@ const jobConnection = superMap({
       if(!req['$sort']){
         req["$sort"] = {
           name: 1
-        }
+        };
       }
 
       delete req['search'];
