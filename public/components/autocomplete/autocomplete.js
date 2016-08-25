@@ -45,7 +45,7 @@ export const ViewModel = DefineMap.extend({
 });
 
 export default Component.extend({
-  tag: 'autocomplete',
+  tag: 'auto-complete',
   template,
   ViewModel: ViewModel,
   events: {
@@ -60,30 +60,29 @@ export default Component.extend({
             hide();
           }
         };
-        canEvent.bind.call(document, 'focusin', this.ffHandler);
-        canEvent.bind.call(document, 'click', this.ffHandler);
+        canEvent.on.call(document, 'focusin', this.ffHandler);
+        canEvent.on.call(document, 'click', this.ffHandler);
       }else{
         this.focusHandler = function(ev){
           if(!element.find(ev.relatedTarget).length){
             hide();
           }
         };
-        canEvent.bind.call(this.element, 'focusout', this.focusHandler);
+        canEvent.on.call(this.element, 'focusout', this.focusHandler);
       }
     },
     removed: function(){
       if(this.isFF){
-        canEvent.unbind.call(document, 'focus', this.ffHandler);
-        canEvent.unbind.call(document, 'click', this.ffHandler);
+        canEvent.off.call(document, 'focus', this.ffHandler);
+        canEvent.off.call(document, 'click', this.ffHandler);
       }else {
-        canEvent.unbind.call(this.element, 'focusout', this.focusHandler);
+        canEvent.off.call(this.element, 'focusout', this.focusHandler);
       }
     },
     'input.autocomplete focus': function(el, ev){
       this.show();
     },
   	'input.autocomplete keyup': function(el, ev) {
-      this.viewModel.set('value', el.value);
       this.viewModel.value = el.val();
   	},
   	'.dropdown-menu li a click': function(el, ev){

@@ -1,9 +1,8 @@
+import $ from 'jquery';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
 import DefineMap from 'can-define/map/';
 import DefineList from 'can-define/list/';
-import Lot from 'job-tracker/models/lot/';
-import ajax from 'can-util/dom/ajax/ajax';
 import { LotList } from 'job-tracker/models/lot/';
 
 const Job = DefineMap.extend('Job', {
@@ -31,7 +30,7 @@ const jobConnection = superMap({
 
       delete req['search'];
 
-      return ajax({
+      return $.ajax({
         url: "/api/jobs?$populate[]=lots",
         method: "GET",
         data: req,
@@ -39,8 +38,8 @@ const jobConnection = superMap({
       });
     },
     getData: "GET /api/jobs/{id}?$populate[]=lots",
-    createData: function(job){
-      return ajax({
+    createData(job) {
+      return $.ajax({
         processData: false,
         url: "/api/jobs",
         method: "POST",
@@ -48,8 +47,8 @@ const jobConnection = superMap({
         contentType: 'application/json'
       });
     },
-    updateData: function(job){
-      return ajax({
+    updateData(job) {
+      return $.ajax({
         processData: false,
         url: "/api/jobs/" + job.id,
         method: "PUT",
