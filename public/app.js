@@ -9,7 +9,6 @@ const AppViewModel = DefineMap.extend("AppViewModel",{
   page: {
     type: "string"
   },
-
   title: {
     value: 'job-tracker',
     serialize: false

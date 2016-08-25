@@ -5,6 +5,8 @@ import route from "can-route";
 
 import 'es6-math';
 
+route(':page', { page: 'home' });
+
 const vm = new AppViewModel({page: 'home' });
 route.map(vm);
 
