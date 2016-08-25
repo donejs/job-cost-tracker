@@ -7,29 +7,29 @@ import Job from 'job-tracker/models/job/';
 import Lot from 'job-tracker/models/lot/';
 
 const Task = DefineMap.extend('Task', {
-  name: { type: 'string' },
-  hours: { type: 'number' },
-  cubicYards: { type: 'number' },
-  tons: { type: 'number' },
-  notes: { type: 'string' },
-  completed: { type: 'date' },
-  Job: { Type: Job },
-  Lot: { Type: Lot }
+  name: 'string',
+  hours: 'number',
+  cubicYards: 'number',
+  tons: 'number',
+  notes: 'string',
+  completed: 'date',
+  Job,
+  Lot
 });
 
 const TaskList = DefineList.extend('TaskList', {
-  '*': { Type: Task },
-  totals: function(){
-    var totals = {
+  '*': Task,
+  totals() {
+    const totals = {
       cubicYards: 0,
       tons: 0,
       hours: 0
     };
 
-    this.each(function(task){
-      totals.cubicYards += task.attr('cubicYards');
-      totals.tons += task.attr('tons');
-      totals.hours += task.attr('hours');
+    this.each(task => {
+      totals.cubicYards += task.cubicYards;
+      totals.tons += task.tons;
+      totals.hours += task.hours;
     });
 
     return totals;
@@ -37,69 +37,58 @@ const TaskList = DefineList.extend('TaskList', {
 });
 
 const taskConnection = superMap({
-  parseListData: function(data){
+  parseListData(data) {
     data.current = Math.floor(data.skip / data.limit) + 1;
     data.pages = Math.ceil(data.total / data.limit);
     return data;
   },
   url: {
-    getListData: function(data = {}){
+    getListData(data = {}) {
       return $.ajax({
         url: "/api/tasks?$populate[]=job&$populate[]=lot",
         method: "GET",
         dataType: "json",
-        data: data
+        data
       });
     },
-    getData: function(data = {}){
-      var id = data.id;
+    getData(data = {}) {
+      const id = data.id;
 
       delete data.id;
 
       return $.ajax({
         url: "/api/tasks/" + id + "?$populate[]=job&$populate[]=lot",
         method: "GET",
-        data: data
+        data
       });
     },
-    createData: function(tasks) {
-      var def = $.Deferred();
 
-      $.ajax({
+    createData(tasks)  {
+      return $.ajax({
         url: "/api/tasks",
         method: "POST",
         data: tasks
       }).then(result => {
         // fix #101
-        Task.get({id: result.id}).then(task => {
-          def.resolve(task);
-        });
+        return Task.get({id: result.id});
       });
-
-      return def;
     },
-    updateData: function(task){
-      var def = $.Deferred();
-
+    updateData(task) {
       //extract ids
       task.lot = task.lot.id || task.lot;
       task.job = task.job.id || task.job;
 
-      // force can-connect to re-fetch a whole instance
+      // force $.connect to re-fetch a whole instance
       // so they are properly hydrated
-      $.ajax({
+      return $.ajax({
         url: '/api/tasks/' + task.id,
         method: 'PUT',
         data: task
-      }).then((result) => {
-        Task.get({id: result.id}).then((task) => {
-          def.resolve(task);
-        });
+      }).then(result => {
+        return Task.get({id: result.id});
       });
-
-      return def;
     },
-    destroyData: function(task){
+    destroyData(task) {
       return $.ajax({
         url: "/api/tasks/" + task.id,
         method: "DELETE"
@@ -114,4 +103,4 @@ const taskConnection = superMap({
 tag('task-model', taskConnection);
 
 export default Task;
-export { TaskList, taskConnection };
+export { Task, TaskList, taskConnection };

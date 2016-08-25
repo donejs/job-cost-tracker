@@ -9,19 +9,19 @@ class TokenStore {
     this.key = key;
   }
   fetchToken() {
-    return Promise.resolve(localStorage.getItem(this.key));
+    return Promise.resolve(localStorage && localStorage.getItem(this.key));
   }
   setToken(token) {
-    return Promise.resolve(localStorage.setItem(this.key, token));
+    return Promise.resolve(localStorage && localStorage.setItem(this.key, token));
   }
   deleteToken() {
-    return Promise.resolve(localStorage.removeItem(this.key));
+    return Promise.resolve(localStorage && localStorage.removeItem(this.key));
   }
 }
 
 //TODO: is this the right place to do all this...?
 function beforeSend(xhr) {
-  let id_token = localStorage.getItem('id_token');
+  let id_token = localStorage && localStorage.getItem('id_token');
   if (id_token) {
     xhr.setRequestHeader('Authorization', 'Bearer ' + id_token);
   }
@@ -35,13 +35,11 @@ const User = DefineMap.extend('User', {
       return Promise.reject(new Error('No token provided to authenticate user'));
     }
     return this.setIdToken(id_token)
-      .then(_ => {
-        return new Promise(( resolve, reject ) => {
-            $.ajax({
-              type: "GET",
-              url: '/api/users/current-user'
-            }).then(resolve, reject);
-          });
+      .then(() => {
+        return $.ajax({
+          type: "GET",
+          url: '/api/users/current-user'
+        });
       })
       .then(ajaxResult => new User(ajaxResult))
       .catch(err => { console.error(err); throw err; }); // eslint-disable-line no-console
@@ -61,11 +59,11 @@ const User = DefineMap.extend('User', {
 }, {
   isAdmin: {
     get() {
-      let roles = this.attr('roles');
+      let roles = this.roles;
       return roles && roles.filter(role => role.toLowerCase() === 'admin').length > 0;
     },
     set(newVal) {
-      let roles = this.attr('roles');
+      let roles = this.roles;
       if (!roles) {
         roles = new DefineList();
       }
@@ -78,13 +76,13 @@ const User = DefineMap.extend('User', {
           roles = roles.filter(role => role !== 'admin');
         }
       }
-      this.attr('roles', roles);
+      this.roles = roles;
       this.save();
     }
   },
   provider: {
     get() {
-      let user_id = this.attr('user_id');
+      let user_id = this.user_id;
       let provider = user_id.substring(0, user_id.indexOf('|'));
       return provider;
     }
@@ -92,7 +90,7 @@ const User = DefineMap.extend('User', {
 });
 
 const UserList = DefineList.extend('UserList', {
-  '*': { Type: User }
+  '*': User
 });
 
 export const userConnection = superMap({
@@ -100,7 +98,7 @@ export const userConnection = superMap({
     getListData: "GET /api/users",
     getData: "GET /api/users/{user_id}",
     createData: "POST /api/users",
-    updateData: function(user) {
+    updateData(user) {
       // only allow updating roles
       let { roles, user_id } = user;
       return $.ajax({
@@ -122,4 +120,4 @@ export const userConnection = superMap({
 tag('user-model', userConnection);
 
 export default User;
-export { UserList, userConnection };
+export { User, UserList, userConnection };

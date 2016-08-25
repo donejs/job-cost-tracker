@@ -4,23 +4,23 @@ import superMap from 'job-tracker/models/superMap';
 import DefineMap from 'can-define/map/';
 import DefineList from 'can-define/list/';
 import isNumber from 'lodash/isNumber';
-import Task from 'job-tracker/models/task/';
+import { TaskList } from 'job-tracker/models/task/';
 import moment from 'moment';
 
 function diffValue(val1, val2) {
-  let v1 = Number(val1 || 0);
-  let v2 = Number(val2 || 0);
+  const v1 = Number(val1 || 0);
+  const v2 = Number(val2 || 0);
   if (isNumber(v1) && isNumber(v2)) {
     return v2 - v1;
   }
   return null;
 }
 
-const TaskDay = DefineMap.extend('Task', {
+const TaskDay = DefineMap.extend('TaskDay', {
   job: { type: undefined },
   notes: { type: 'string', value: '' },
   completed: {
-    type(val){
+    type(val) {
       return moment(val, moment.ISO_8601);
     },
     serialize(currentVal) {
@@ -31,55 +31,52 @@ const TaskDay = DefineMap.extend('Task', {
     }
   },
   foreman: { type: undefined },
-  completedTasks: {
-    Type: Task.List,
-    value: []
-  },
-  hours: { type: 'number' },
+  completedTasks: TaskList,
+  hours: 'number',
   allocatedHours: {
     get(){
-      return this.attr('totals').hours;
+      return this.totals.hours;
     }
   },
   hoursDiff: {
     get() {
-      return diffValue(this.attr('hours'), this.attr('allocatedHours'));
+      return diffValue(this.hours, this.allocatedHours);
     }
   },
 
-  cubicYards: { type: 'number' },
+  cubicYards: 'number',
   allocatedCubicYards: {
     get(){
-      return this.attr('totals').cubicYards;
+      return this.totals.cubicYards;
     }
   },
   cubicYardsDiff: {
     get() {
-      return diffValue(this.attr('cubicYards'), this.attr('allocatedCubicYards'));
+      return diffValue(this.cubicYards, this.allocatedCubicYards);
     }
   },
 
-  tons: { type: 'number' },
+  tons: 'number',
   allocatedTons: {
     get(){
-      return this.attr('totals').tons;
+      return this.totals.tons;
     }
   },
   tonsDiff: {
     get() {
-      return diffValue(this.attr('tons'), this.attr('allocatedTons'));
+      return diffValue(this.tons, this.allocatedTons);
     }
   },
   totals: {
     get() {
-      var completed = this.attr('completedTasks'),
-          totals = {
-            hours: 0,
-            cubicYards: 0,
-            tons: 0
-          };
+      const completed = this.completedTasks;
+      const totals = {
+        hours: 0,
+        cubicYards: 0,
+        tons: 0
+      };
 
-      completed.each(function(val){
+      completed.each(val => {
         totals.hours += val.hours;
         totals.cubicYards += val.cubicYards;
         totals.tons += val.tons;
@@ -91,11 +88,11 @@ const TaskDay = DefineMap.extend('Task', {
 });
 
 const TaskDayList = DefineList.extend('TaskDayList', {
-  '*': { Type: TaskDay }
+  '*': TaskDay
 });
 
 const taskDayConnection = superMap({
-  parseListData: function(data){
+  parseListData(data) {
     data.current = Math.floor(data.skip / data.limit) + 1;
     data.pages = Math.ceil(data.total / data.limit);
     return data;
@@ -104,34 +101,26 @@ const taskDayConnection = superMap({
     getListData: "GET /api/task-days?$populate[]=completedTasks&$populate[]=lot&$populate[]=foreman&$populate[]=job",
     getData: "GET /api/task-days/{id}/?$populate[]=completedTasks&$populate[]=lot&$populate[]=foreman&$populate[]=job",
     createData: "POST /api/task-days",
-    updateData: function(taskDay){
-      var def = can.Deferred();
-
+    updateData(taskDay) {
       //extract ids
       taskDay.foreman = taskDay.foreman.id || taskDay.foreman;
       taskDay.job = taskDay.job.id || taskDay.job;
-      taskDay.completedTasks = taskDay.completedTasks.map(function(td){
-        return td.id;
-      });
+      taskDay.completedTasks = taskDay.completedTasks.map(td => td.id);
 
-      // force can.connect to re-fetch a whole instance
+      // force can-connect to re-fetch a whole instance
       // so they are properly hydrated
-      can.ajax({
+      return $.ajax({
         processData: false,
         url: '/api/task-days/' + taskDay.id,
         method: 'PUT',
         data: JSON.stringify(taskDay),
         contentType: 'application/json'
-      }).then((result) => {
-        TaskDay.get({id: result.id}).then((taskDay) => {
-          def.resolve(taskDay);
-        });
+      }).then(result => {
+        return TaskDay.get({id: result.id});
       });
-
-      return def;
     },
-    destroyData: function(taskDay){
-      return can.ajax({
+    destroyData(taskDay) {
+      return $.ajax({
         url: "/api/task-days/" + taskDay.id,
         method: "DELETE"
       });
@@ -145,4 +134,4 @@ const taskDayConnection = superMap({
 tag('task-day-model', taskDayConnection);
 
 export default TaskDay;
-export { TaskDayList, taskDayConnection };
+export { TaskDay, TaskDayList, taskDayConnection };
