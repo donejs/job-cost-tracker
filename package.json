@@ -54,6 +54,7 @@
     "can-route-pushstate": "^3.0.0-pre.6",
     "can-stache": "^3.0.0-pre.15",
     "can-stache-bindings": "^3.0.0-pre.19",
+    "can-util": "^3.0.0-pre.34",
     "can-view-autorender": "^3.0.0-pre.4",
     "can-view-model": "^3.0.0-pre.6",
     "chai": "^3.5.0",

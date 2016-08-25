@@ -1,9 +1,9 @@
-import can from 'can';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
 import DefineMap from 'can-define/map/';
 import DefineList from 'can-define/list/';
 import Lot from 'job-tracker/models/lot/';
+import ajax from 'can-util/dom/ajax/ajax';
 
 const Job = DefineMap.extend('Job', {
   name: { type: 'string' },
@@ -34,7 +34,7 @@ const jobConnection = superMap({
 
       delete req['search'];
 
-      return can.ajax({
+      return ajax({
         url: "/api/jobs?$populate[]=lots",
         method: "GET",
         data: req,
@@ -43,7 +43,7 @@ const jobConnection = superMap({
     },
     getData: "GET /api/jobs/{id}?$populate[]=lots",
     createData: function(job){
-      return can.ajax({
+      return ajax({
         processData: false,
         url: "/api/jobs",
         method: "POST",
@@ -52,7 +52,7 @@ const jobConnection = superMap({
       });
     },
     updateData: function(job){
-      return can.ajax({
+      return ajax({
         processData: false,
         url: "/api/jobs/" + job.id,
         method: "PUT",

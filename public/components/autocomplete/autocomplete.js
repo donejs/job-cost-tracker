@@ -40,13 +40,14 @@ export const ViewModel = DefineMap.extend({
     };
 
     this.dispatch('selected', data);
+    this.set(data);
   }
 });
 
 export default Component.extend({
-  tag: 'autocomplete',
-  viewModel: ViewModel,
+  tag: 'auto-complete',
   template,
+  ViewModel: ViewModel,
   events: {
     inserted: function(){
       var element = this.element,
@@ -81,8 +82,8 @@ export default Component.extend({
     'input.autocomplete focus': function(el, ev){
       this.show();
     },
-  	'input.autocomplete keyup': function(el, ev){
-      this.viewModel.value = el.val();
+  	'input.autocomplete keyup': function(el, ev) {
+      this.viewModel.set('value', el.value);
   	},
   	'.dropdown-menu li a click': function(el, ev){
   		var dataEl = el.find('[data-value]'),

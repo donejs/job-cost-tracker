@@ -1,8 +1,8 @@
-import can from 'can';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
 import DefineMap from 'can-define/map/';
 import DefineList from 'can-define/list/';
+import ajax from 'can-util/dom/ajax/ajax';
 
 const Lot = DefineMap.extend('Lot', {
   lotNumber: { type: 'string' },
@@ -31,7 +31,7 @@ const lotConnection = superMap({
 
       delete req.search;
 
-      return can.ajax({
+      return ajax({
         url: "/api/lots?$populate[]=tasks",
         method: "GET",
         dataType: "json",
