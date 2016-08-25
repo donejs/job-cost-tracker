@@ -26,7 +26,7 @@ const lotConnection = superMap({
       if(!req['$sort']){
         req["$sort"] = {
           lotNumber: 1
-        }
+        };
       }
 
       delete req.search;
@@ -51,4 +51,4 @@ const lotConnection = superMap({
 tag('lot-model', lotConnection);
 
 export default Lot;
-export { LotList, lotConnection }
+export { LotList, lotConnection };

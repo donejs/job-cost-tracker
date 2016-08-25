@@ -1,4 +1,4 @@
-import can from 'can';
+import $ from 'jquery';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
 import DefineMap from 'can-define/map/';
@@ -44,7 +44,7 @@ const taskConnection = superMap({
   },
   url: {
     getListData: function(data = {}){
-      return can.ajax({
+      return $.ajax({
         url: "/api/tasks?$populate[]=job&$populate[]=lot",
         method: "GET",
         dataType: "json",
@@ -56,16 +56,16 @@ const taskConnection = superMap({
 
       delete data.id;
 
-      return can.ajax({
+      return $.ajax({
         url: "/api/tasks/" + id + "?$populate[]=job&$populate[]=lot",
         method: "GET",
         data: data
       });
     },
     createData: function(tasks) {
-      var def = can.Deferred();
+      var def = $.Deferred();
 
-      can.ajax({
+      $.ajax({
         url: "/api/tasks",
         method: "POST",
         data: tasks
@@ -79,15 +79,15 @@ const taskConnection = superMap({
       return def;
     },
     updateData: function(task){
-      var def = can.Deferred();
+      var def = $.Deferred();
 
       //extract ids
       task.lot = task.lot.id || task.lot;
       task.job = task.job.id || task.job;
 
-      // force can.connect to re-fetch a whole instance
+      // force can-connect to re-fetch a whole instance
       // so they are properly hydrated
-      can.ajax({
+      $.ajax({
         url: '/api/tasks/' + task.id,
         method: 'PUT',
         data: task
@@ -100,7 +100,7 @@ const taskConnection = superMap({
       return def;
     },
     destroyData: function(task){
-      return can.ajax({
+      return $.ajax({
         url: "/api/tasks/" + task.id,
         method: "DELETE"
       });

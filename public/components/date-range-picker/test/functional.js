@@ -7,7 +7,6 @@ import moment from "moment";
 
 const assert = chai.assert;
 
-
 describe("<date-range-picker>", function(){
 
 	before(function () {
@@ -22,8 +21,8 @@ describe("<date-range-picker>", function(){
 		F.open('/public/components/date-range-picker/date-range-picker.html');
 		F('date-range-picker').exists(10000, function () {
 			// wait until the component is append by done-autorender
-			done()
-		})
+			done();
+		});
 	});
 
 	it('for the end date', function(done){
