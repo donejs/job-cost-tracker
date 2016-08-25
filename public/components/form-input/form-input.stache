@@ -1,6 +1,12 @@
+<can-import from="./form-input.less!" />
+
 <div class="form-group">
-	<label for="{{uniqueId}}">
-		<content />
-	</label>
-	<input {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} {($value)}="value" id="{{uniqueId}}" class="form-control" type="{{type}}" />
+	<label for="{{uniqueId}}"><content /></label>
+	<input
+    id="{{uniqueId}}"
+    type="{{type}}"
+    class="form-control"
+    {($value)}="value"
+    {{#if placeholder}}placeholder="{{placeholder}}"{{/if}}
+  />
 </div>
