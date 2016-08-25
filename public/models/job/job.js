@@ -4,23 +4,20 @@ import DefineMap from 'can-define/map/';
 import DefineList from 'can-define/list/';
 import Lot from 'job-tracker/models/lot/';
 import ajax from 'can-util/dom/ajax/ajax';
+import { LotList } from 'job-tracker/models/lot/';
 
 const Job = DefineMap.extend('Job', {
-  name: { type: 'string' },
-  lots: {
-  	Type: Lot.List,
-  	value: []
-  }
+  name: 'string',
+  lots: LotList
 });
 
 const JobList = DefineList.extend('JobList', {
-  '*': { Type: Job }
+  '*': Job
 });
 
 const jobConnection = superMap({
   url: {
-    getListData: function(req = {}){
-      var data = '';
+    getListData(req = {}) {
       if(req && req.search){
         req['$search'] = {
           'name': req.search
@@ -70,4 +67,4 @@ const jobConnection = superMap({
 tag('job-model', jobConnection);
 
 export default Job;
-export { JobList, jobConnection };
+export { Job, JobList, jobConnection };
