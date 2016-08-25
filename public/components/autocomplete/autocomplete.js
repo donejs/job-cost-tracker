@@ -45,7 +45,7 @@ export const ViewModel = DefineMap.extend({
 });
 
 export default Component.extend({
-  tag: 'auto-complete',
+  tag: 'autocomplete',
   template,
   ViewModel: ViewModel,
   events: {

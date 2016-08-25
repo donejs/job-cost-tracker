@@ -27,7 +27,7 @@
 	  	<div class="col-xs-6">
 		  	<form>
 		  		<job-model get-list="{search=job}" class="list-group">
-			  		<auto-complete {(value)}="job" {(last-selected)}="jobSelected" {list}="value">
+			  		<autocomplete {(value)}="job" {(last-selected)}="jobSelected" {list}="value">
 			  			{{name}}
 			  		</autocomplete>
 			  	</job-model>
@@ -61,7 +61,7 @@
 	  	<div class="col-xs-6">
 		  	<form>
 		  		<lot-model get-list="{search=lot}" class="list-group">
-			  		<auto-complete {(value)}="lot" {(last-selected)}="lotSelected" {list}="value">
+			  		<autocomplete {(value)}="lot" {(last-selected)}="lotSelected" {list}="value">
 			  			<span>
 			  				#<span data-value>{{lotNumber}}</span>
 			  			</span>
