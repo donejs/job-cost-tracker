@@ -8,9 +8,16 @@ import moment from "moment";
 
 const assert = chai.assert;
 
-F.attach(mocha);
-
 describe('pikaday', function(){
+
+	before(function () {
+		F.attach(mocha);
+	});
+
+	after(function () {
+		F.detach(mocha);
+	});
+
 	beforeEach(function(){
 		F.open('/public/components/date-range-picker/date-range-picker.html');
 		// wait until the component is append by done-autorender

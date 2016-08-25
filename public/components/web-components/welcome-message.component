@@ -8,7 +8,7 @@
     {{#if currentUser}}
     <p>Hello {{currentUserDisplayName}}, welcome to the Job Cost Tracker</p>
     {{else}}
-    <p>Hello there! You are currently viewing the SS Concrete Job Cost Tracker</p>
+    <p>Hello there! You are currently viewing the Concrete Job Cost Tracker</p>
     {{/if}}
   </template>
   <view-model>

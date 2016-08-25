@@ -1,9 +1,16 @@
 import F from 'funcunit';
 import mocha from "steal-mocha";
 
-F.attach(mocha);
-
 describe('check texts', function(){
+
+	before(function () {
+		F.attach(mocha);
+	});
+
+	after(function () {
+		F.detach(mocha);
+	});
+
 	beforeEach(function(){
 		F.open('/public/components/data-cleanup/data-cleanup.html');
 	});
