@@ -3,21 +3,22 @@ import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
 import DefineMap from 'can-define/map/';
 import DefineList from 'can-define/list/';
+import { TaskList } from 'job-tracker/models/lot/';
 
 const Lot = DefineMap.extend('Lot', {
-  lotNumber: { type: 'string' },
-  jobId: { type: 'number' },
-  name: { type: 'string' }
+  lotNumber: 'string',
+  jobId: 'number',
+  name: 'string',
+  tasks: TaskList
 });
 
 const LotList = DefineList.extend('LotList', {
-  '*': { Type: Lot }
+  '*': Lot
 });
 
 const lotConnection = superMap({
   url: {
-    getListData: function(req = {}){
-      var data = '';
+    getListData(req = {}) {
       if(req.search){
         req['$search'] = {
           'lotNumber': req.search
@@ -51,4 +52,4 @@ const lotConnection = superMap({
 tag('lot-model', lotConnection);
 
 export default Lot;
-export { LotList, lotConnection };
+export { Lot, LotList, lotConnection };

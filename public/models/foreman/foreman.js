@@ -11,13 +11,12 @@ const Foreman = DefineMap.extend('Foreman', {
 });
 
 const ForemanList = DefineList.extend({
-  '*': { Type: Foreman }
+  '*': Foreman
 });
 
 const foremanConnection = superMap({
   url: {
-    getListData: function(req = {}){
-      var data = '';
+    getListData(req = {}) {
       if(req.search){
         req['$search'] = {
           'name': req.search
@@ -47,4 +46,4 @@ const foremanConnection = superMap({
 tag('foreman-model', foremanConnection);
 
 export default Foreman;
-export { ForemanList, foremanConnection };
+export { Foreman, ForemanList, foremanConnection };
