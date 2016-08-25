@@ -1,0 +1,34 @@
+<can-component tag="welcome-message">
+  <style type="less">
+    display: block;
+
+    p { font-weight: bold; }
+  </style>
+  <template>
+    {{#if currentUser}}
+    <p>Hello {{currentUserDisplayName}}, welcome to the Job Cost Tracker</p>
+    {{else}}
+    <p>Hello there! You are currently viewing the Concrete Job Cost Tracker</p>
+    {{/if}}
+  </template>
+  <script type="view-model">
+    import DefineMap from 'can-define/map/'
+
+    export default DefineMap.extend({
+      currentUser: {
+        value: null
+      },
+      currentUserDisplayName: {
+        get() {
+          let currentUser = this.currentUser;
+          if (currentUser) {
+            return currentUser.given_name ||
+              currentUser.name ||
+              currentUser.name;
+          }
+          return '';
+        }
+      }
+    });
+  </script>
+</can-component>
