@@ -70,6 +70,7 @@
     "lodash": "^3.10.1",
     "moment": "^2.11.0",
     "pikaday": "^1.4.0",
+    "replace": "^0.3.0",
     "steal": "^0.16.35",
     "steal-mocha": "0.0.3",
     "steal-tools": "^0.16.7",
