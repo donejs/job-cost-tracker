@@ -1,13 +1,10 @@
-import Component from 'can/component/';
-import Map from 'can/map/';
-import 'can/map/define/';
+import Component from 'can-component';
+import DefineMap from 'can-define/map/';
 import './data-cleanup.less';
 import template from './data-cleanup.stache';
 import moment from 'moment';
 
-export const ViewModel = Map.extend({
-  define: {}
-});
+export const ViewModel = DefineMap.extend({});
 
 export default Component.extend({
   tag: 'data-cleanup',
