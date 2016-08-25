@@ -1,23 +1,26 @@
-import route from "can/route/";
-import AppMap from "can-ssr/app-map";
-import 'can/route/pushstate/';
+import DefineMap from "can-define/map/";
+import route from "can-route/";
+import 'can-route-pushstate/';
 
-import 'can/map/define/';
+const AppViewModel = DefineMap.extend("AppViewModel",{
+  seal: true
+}, {
+  route: "string",
+  page: {
+    type: "string"
+  },
 
-const AppViewModel = AppMap.extend({
-  define: {
-    title: {
-      value: 'job-tracker',
-      serialize: false
-    },
-    loadedComponents: {
-      value: {},
-      serialize: false
-    },
-    currentUser: {
-      value: null,
-      serialize: false
-    }
+  title: {
+    value: 'job-tracker',
+    serialize: false
+  },
+  loadedComponents: {
+    value: {},
+    serialize: false
+  },
+  currentUser: {
+    value: null,
+    serialize: false
   },
   userLogout() {
     localStorage.clear();
