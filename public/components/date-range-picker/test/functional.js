@@ -2,13 +2,13 @@ import chai from "chai";
 import F from 'funcunit';
 import mocha from "steal-mocha";
 
-import canStache from "can/view/stache/";
 import '../date-range-picker';
 import moment from "moment";
 
 const assert = chai.assert;
 
-describe('pikaday', function(){
+
+describe("<date-range-picker>", function(){
 
 	before(function () {
 		F.attach(mocha);
@@ -18,17 +18,17 @@ describe('pikaday', function(){
 		F.detach(mocha);
 	});
 
-	beforeEach(function(){
+	beforeEach(function(done){
 		F.open('/public/components/date-range-picker/date-range-picker.html');
-		// wait until the component is append by done-autorender
-		F('date-range-picker').exists();
+		F('date-range-picker').exists(10000, function () {
+			// wait until the component is append by done-autorender
+			done()
+		})
 	});
 
 	it('for the end date', function(done){
 
 		F(".report-date-end:eq(0)").click(function(){
-			F("div.pika-single>div.pika-lendar").exists();
-
 			let lastDayInFirstWeek = F('table.pika-table>tbody>tr').first().find('td').last().find('button');
 
 			let day = lastDayInFirstWeek.attr("data-pika-day");
@@ -42,13 +42,13 @@ describe('pikaday', function(){
 				assert.equal(inputEndDate, calcEndDate);
 			});
 		});
-
 		F.add(done);
 	});
 
 
 	it('for the start date', function(done){
-		F(".report-date-start:eq(0)").click(function(){
+
+		F(".report-date-start:eq(0)").click(function () {
 			F("div.pika-single>div.pika-lendar").exists();
 
 			let lastDayInFirstWeek = F('table.pika-table>tbody>tr').first().find('td').last().find('button');
