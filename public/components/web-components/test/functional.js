@@ -5,7 +5,7 @@ import chai from "chai";
 
 const assert = chai.assert;
 
-import canStache from "can/view/stache/";
+import canStache from "can-stache";
 
 describe('<welcome-message>', function(){
 	let testPage;

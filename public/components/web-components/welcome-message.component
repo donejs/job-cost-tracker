@@ -1,17 +1,17 @@
 <can-component tag="welcome-message">
-  <style type="less">
-    display: block;
+    <style type="less">
+        display: block;
 
-    p { font-weight: bold; }
-  </style>
-  <template>
-    {{#if currentUser}}
-    <p>Hello {{currentUserDisplayName}}, welcome to the Job Cost Tracker</p>
-    {{else}}
-    <p>Hello there! You are currently viewing the Concrete Job Cost Tracker</p>
-    {{/if}}
-  </template>
-  <script type="view-model">
+        p { font-weight: bold; }
+    </style>
+    <template>
+        {{#if currentUser}}
+        <p>Hello {{currentUserDisplayName}}, welcome to the Job Cost Tracker</p>
+        {{else}}
+        <p>Hello there! You are currently viewing the Concrete Job Cost Tracker</p>
+        {{/if}}
+    </template>
+    <script type="view-model">
     import DefineMap from 'can-define/map/'
 
     export default DefineMap.extend({
