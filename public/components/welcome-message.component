@@ -11,7 +11,7 @@
     <p>Hello there! You are currently viewing the SS Concrete Job Cost Tracker</p>
     {{/if}}
   </template>
-  <view-model>
+  <script type="view-model">
     import Map from 'can/map/';
     import 'can/map/define/';
 
@@ -33,5 +33,5 @@
         }
       }
     });
-  </view-model>
+  </script>
 </can-component>
