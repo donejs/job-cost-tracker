@@ -2,8 +2,8 @@
 <can-import from="job-tracker/styles.less" />
 
 <can-import from="job-tracker/components/header/" />
-{{!<can-import from="job-tracker/components/app-nav/" />
-<can-import from="job-tracker/components/data-cleanup/" />}}
+<can-import from="job-tracker/components/app-nav/" />
+<can-import from="job-tracker/components/data-cleanup/" />
 
 <header />
 

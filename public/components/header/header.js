@@ -1,8 +1,7 @@
-import Component from 'can/component/';
-import Map from 'can/map/';
-import 'can/map/define/';
-import './header.less!';
-import template from './header.stache!';
+import Component from 'can-component';
+import DefineMap from 'can-define/map/'
+import './header.less';
+import template from './header.stache';
 
 /**
  * @module {Module} job-tracker/components/header <header>
@@ -15,10 +14,7 @@ import template from './header.stache!';
  * @demo public/components/header/header.html
  *
  **/
-export const ViewModel = Map.extend({
-  define: {
-  }
-});
+export const ViewModel = DefineMap.extend({});
 
 export default Component.extend({
   tag: 'header',
