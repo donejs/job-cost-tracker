@@ -21,7 +21,7 @@ describe('models/report', () => {
           assert.equal(items[0].description, 'First item');
           done();
         })
-        .catch( done )
+        .catch( done );
 
     });
 

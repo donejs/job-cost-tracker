@@ -1,4 +1,4 @@
-import can from 'can';
+import $ from 'jquery';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
 import DefineMap from 'can-define/map/';
@@ -26,12 +26,12 @@ const lotConnection = superMap({
       if(!req['$sort']){
         req["$sort"] = {
           lotNumber: 1
-        }
+        };
       }
 
       delete req.search;
 
-      return can.ajax({
+      return $.ajax({
         url: "/api/lots?$populate[]=tasks",
         method: "GET",
         dataType: "json",
@@ -51,4 +51,4 @@ const lotConnection = superMap({
 tag('lot-model', lotConnection);
 
 export default Lot;
-export { LotList, lotConnection }
+export { LotList, lotConnection };

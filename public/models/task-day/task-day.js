@@ -1,4 +1,4 @@
-import can from 'can';
+import $ from 'jquery';
 import tag from 'can-connect/can/tag/';
 import superMap from 'job-tracker/models/superMap';
 import DefineMap from 'can-define/map/';

@@ -1,4 +1,4 @@
-import can from 'can';
+import $ from 'jquery';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
 import DefineMap from 'can-define/map/';
@@ -26,7 +26,7 @@ const foremanConnection = superMap({
 
       delete req.search;
 
-      return can.ajax({
+      return $.ajax({
         url: '/api/foremen',
         method: 'GET',
         data: req,
