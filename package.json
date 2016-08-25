@@ -47,6 +47,7 @@
     "browser-sync": "^2.14.0",
     "can-component": "^3.0.0-pre.15",
     "can-connect": "^0.6.0-pre.16",
+    "can-define": "^0.7.24",
     "can-fixture": "^0.4.0-pre.11",
     "can-route": "^3.0.0-pre.13",
     "can-route-pushstate": "^3.0.0-pre.3",
