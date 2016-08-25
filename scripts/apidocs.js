@@ -1,7 +1,7 @@
 var exec = require('child_process').exec,
   replace = require('replace'),
-  cmd = 'copy -R ./node_modules/swagger-ui/dist/* ./docs/api/ && copy ./api-spec.json ./docs/api',
-  winCmd = 'rmdir /S /Q .\\docs\\api & ' +
+  cmd = 'cp -R ./node_modules/swagger-ui/dist/ ./docs/api/ && cp ./api-spec.json ./docs/api',
+  winCmd = 'rmdir /S /Q .\\docs\\api && ' +
     'xcopy /e /i .\\node_modules\\swagger-ui\\dist .\\docs\\api && ' +
     'copy .\\api-spec.json .\\docs\\api';
 console.log('Process platform: ', process.platform);
@@ -10,8 +10,16 @@ if (process.platform === 'win32') {
   cmd = winCmd;
 }
 
-exec(cmd, function (error, stdout, stderr) {
-  console.log(error, stdout, stderr);
+exec(cmd, function (err, stdout, stderr) {
+  if (err) {
+    console.log(err);
+    throw err;
+  }
+
+  if (stderr) {
+    console.log(stderr);
+    throw err;
+  }
 
   replace({
     regex: "http://petstore.swagger.io/v2/swagger.json",

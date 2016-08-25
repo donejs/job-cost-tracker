@@ -15,9 +15,7 @@
     "api-docs": "node scripts/apidocs.js",
     "document": "documentjs && node scripts/gendocco.js && npm run api-docs",
     "build": "node build",
-    "predeploy:docs": "git branch -D deploy-docs docs-build & git checkout -b deploy-docs",
-    "push-docs": "git add ./docs -f && git commit -m \"Updating docs\" && git push origin $(git subtree split --prefix docs -b docs-build):gh-pages --force",
-    "deploy:docs": "npm run document && npm run push-docs & git checkout -"
+    "deploy:docs": "node scripts/deploydocs.js"
   },
   "main": "job-tracker/main",
   "files": [
