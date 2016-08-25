@@ -51,7 +51,7 @@
     "can-event": "^3.0.0-pre.6",
     "can-fixture": "^0.4.0-pre.11",
     "can-route": "^3.0.0-pre.13",
-    "can-route-pushstate": "^3.0.0-pre.3",
+    "can-route-pushstate": "^3.0.0-pre.6",
     "can-stache": "^3.0.0-pre.15",
     "can-stache-bindings": "^3.0.0-pre.19",
     "can-view-autorender": "^3.0.0-pre.4",
