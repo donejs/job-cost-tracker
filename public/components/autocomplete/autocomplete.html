@@ -1,3 +1,14 @@
+<script src="/node_modules/steal/steal.js"
+        main="can-view-autorender">
+  import viewModel from 'can-view-model';
+  var vm = viewModel(document.getElementById('demo'));
+  vm.set("job", '');
+  vm.set("lot", '');
+  vm.set("jobSelected", '');
+  vm.set("lotSelected", '');
+  window.vm = vm;
+</script>
+
 <script type="text/stache" can-autorender id="demo">
   <can-import from="job-tracker/components/autocomplete/" />
   <can-import from="job-tracker/models/job/" />
@@ -14,7 +25,7 @@
     &#123;{title}}
   &lt/autocomplete>
 &lt/job-model></pre>
-		
+
 		<p>
 			Autocomplete text value: {{job}}
 		</p>
@@ -77,17 +88,4 @@
 	  </div>
 	</div>
   </div>
-</script>
-<script src="../../../node_modules/steal/steal.js"
-        main="@empty"></script>
-<script>	
-    steal('can','jquery','can/view/autorender', function(can, $){
-      $("#demo").viewModel().attr({
-      	job: '',
-      	lot: '',
-      	jobSelected: '',
-      	lotSelected: ''
-      });
-
-    });
 </script>
