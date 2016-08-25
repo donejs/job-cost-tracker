@@ -1,7 +1,7 @@
 var exec = require('child_process').exec,
   replace = require('replace'),
   cmd = 'copy -R ./node_modules/swagger-ui/dist/* ./docs/api/ && copy ./api-spec.json ./docs/api',
-  winCmd = 'rmdir /S /Q .\\docs\\api && ' +
+  winCmd = 'rmdir /S /Q .\\docs\\api & ' +
     'xcopy /e /i .\\node_modules\\swagger-ui\\dist .\\docs\\api && ' +
     'copy .\\api-spec.json .\\docs\\api';
 console.log('Process platform: ', process.platform);
