@@ -6,10 +6,11 @@
     <script>FuncUnit = { frameMode: true };</script>
 </head>
 <body>
-  <script src="../../../../node_modules/steal/steal.js" main="@empty">
-    import 'job-tracker/components/header/test/unit';
-    import 'job-tracker/components/header/test/functional';
-    mocha.run();
+  <script src="node_modules/steal/steal.js" main="@empty">
+      steal(
+              'job-tracker/components/header/test/unit.js',
+              'job-tracker/components/header/test/functional.js'
+      );
   </script>
 </body>
 </html>
