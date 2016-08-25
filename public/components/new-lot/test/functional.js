@@ -4,16 +4,25 @@ import mocha from "steal-mocha";
 
 const assert = chai.assert;
 
-F.attach(mocha);
-
 describe('Functional Test', function(){
-	beforeEach(function(){
+
+	before(function () {
+		F.attach(mocha);
+	});
+
+	after(function () {
+		F.detach(mocha);
+	});
+
+	beforeEach(function(done){
 		F.open('/public/components/new-lot/new-lot.html');
-		// F('new-lot').exists();
+		F.add(done);
 	});
 
 	it('silly test', function(done){
-		assert.ok(true);
+		F('new-lot').exists(10000, function () {
+			assert.ok(true);
+		});
 		F.add(done);
 	});
 });
