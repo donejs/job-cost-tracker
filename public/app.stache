@@ -45,7 +45,7 @@
       <user-manager  {current-user}='currentUser' />
       {{/case}}
       {{#default}}
-      <can-import from="job-tracker/components/welcome-message.component" />
+      <can-import from="job-tracker/components/web-components/welcome-message.component" />
       <welcome-message {current-user}='currentUser' />
       {{/default}}
     {{/switch}}
