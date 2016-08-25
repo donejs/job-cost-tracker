@@ -1,4 +1,4 @@
-import can from 'can';
+import $ from 'jquery';
 import superMap from 'job-tracker/models/superMap';
 import tag from 'can-connect/can/tag/';
 import DefineMap from 'can-define/map/';
@@ -67,7 +67,7 @@ const User = DefineMap.extend('User', {
     set(newVal) {
       let roles = this.attr('roles');
       if (!roles) {
-        roles = new can.List();
+        roles = new DefineList();
       }
       if (newVal) {
         if (roles.indexOf('admin') === -1) {
@@ -103,7 +103,7 @@ export const userConnection = superMap({
     updateData: function(user) {
       // only allow updating roles
       let { roles, user_id } = user;
-      return can.ajax({
+      return $.ajax({
         processData: false,
         url: "/api/users/" + user_id,
         method: "PATCH",
