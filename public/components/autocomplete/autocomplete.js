@@ -84,6 +84,7 @@ export default Component.extend({
     },
   	'input.autocomplete keyup': function(el, ev) {
       this.viewModel.set('value', el.value);
+      this.viewModel.value = el.val();
   	},
   	'.dropdown-menu li a click': function(el, ev){
   		var dataEl = el.find('[data-value]'),
