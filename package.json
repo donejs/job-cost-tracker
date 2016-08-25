@@ -11,13 +11,13 @@
   "scripts": {
     "test": "testee public/test/test.html --browsers firefox --reporter Spec",
     "start": "browser-sync start --config bs-config.js",
-    "predocument": "rm -rf docs && mkdir docs",
-    "api-docs": "cp -R ./node_modules/swagger-ui/dist/ ./docs/api/ && cp ./api-spec.json ./docs/api && sed -E -i.bak 's/\"http:\\/\\/petstore[^\"]+\"/\".\\/api-spec.json\"/g' ./docs/api/index.html",
+    "predocument": "rimraf -rf docs && mkdir docs",
+    "api-docs": "node scripts/apidocs.js",
     "document": "documentjs && node scripts/gendocco.js && npm run api-docs",
     "build": "node build",
-    "predeploy:docs": "git branch -D deploy-docs docs-build; git checkout -b deploy-docs",
+    "predeploy:docs": "git branch -D deploy-docs docs-build & git checkout -b deploy-docs",
     "push-docs": "git add ./docs -f && git commit -m \"Updating docs\" && git push origin $(git subtree split --prefix docs -b docs-build):gh-pages --force",
-    "deploy:docs": "npm run document && npm run push-docs; git checkout -"
+    "deploy:docs": "npm run document && npm run push-docs & git checkout -"
   },
   "main": "job-tracker/main",
   "files": [

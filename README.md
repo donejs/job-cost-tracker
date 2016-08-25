@@ -14,7 +14,7 @@ Requires NodeJS `v6.x` and NPM `v3.x`
 1. `npm install`
 
 ## Run
-Run the app with `donejs develop`
+Run the app with `npm start`
 
 ## Documentation
 
