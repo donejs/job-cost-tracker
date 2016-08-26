@@ -30,16 +30,16 @@ connect.superMap = function(options){
 		realTime,
 		callbacksOnce];
 
-	if(typeof localStorage !== "undefined") {
-		if(!options.cacheConnection) {
-			options.cacheConnection = connect([localCache],{
-				name: options.name + "Cache",
-				idProp: options.idProp,
-				algebra: options.algebra
-			});
-		}
-		behaviors.push(callbacksCache, fallThroughCache);
-	}
+	// if(typeof localStorage !== "undefined") {
+	// 	if(!options.cacheConnection) {
+	// 		options.cacheConnection = connect([localCache],{
+	// 			name: options.name + "Cache",
+	// 			idProp: options.idProp,
+	// 			algebra: options.algebra
+	// 		});
+	// 	}
+	// 	behaviors.push(callbacksCache, fallThroughCache);
+	// }
 	options.ajax = $.ajax;
 
 	return connect(behaviors,options);

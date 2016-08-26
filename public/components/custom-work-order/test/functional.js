@@ -2,8 +2,8 @@ import $ from 'jquery';
 import chai from 'chai';
 import F from 'funcunit';
 import mocha from 'steal-mocha';
+import stache from 'can-stache';
 import fixture from 'can-fixture';
-import stache from 'can/view/stache/';
 
 import '../custom-work-order';
 
@@ -12,15 +12,18 @@ const assert = chai.assert;
 describe('<custom-work-order />', function() {
   before(function() {
     F.attach(mocha);
-    fixture('GET /api/jobs', () => jobsFixture);
+    fixture('GET /api/jobs', () => {
+      console.log('matches ', jobsFixture);
+      return jobsFixture;
+    });
   });
 
   after(function() {
     fixture('GET /api/jobs', null);
-    $('#test-area').empty();
+    // $('#test-area').empty();
   });
 
-  it('should render a list of jobs', function(done) {
+  it.only('should render a list of jobs', function(done) {
     $('#test-area').html(stache('<custom-work-order></custom-work-order>'));
 
     // job-select will contain as many option tags as jobs are
@@ -40,10 +43,10 @@ describe('<custom-work-order />', function() {
   it('renders the lots list of the selected job id', function(done) {
     const vm = $('custom-work-order').viewModel();
 
-    vm.attr('jobsPromise').then(function() {
+    vm.jobsPromise.then(function() {
       const firstJob = jobsFixture[0];
 
-      vm.attr('selectedJobId', firstJob.id);
+      vm.selectedJobId = firstJob.id;
 
       // same as the job-select, lot-select includes a placeholder option tag
       assert($('#lot-select option').length, firstJob.lots.length + 1);

@@ -1,6 +1,6 @@
 <can-import from="bootstrap/less/bootstrap.less!" />
 <can-import from="job-tracker/components/form-input/" />
-<can-import from="job-tracker/components/custom-work-order/custom-work-order.less!" />;
+<can-import from="job-tracker/components/custom-work-order/custom-work-order.less!" />
 
 <div class="container-fluid">
   <h2>Custom Work Order</h2>
