@@ -23,7 +23,17 @@ module.exports = {
     "watchOptions": {},
     "server": true,
     "port": 8080,
-    "middleware": [ historyApiFallback() ],
+    "middleware": [ historyApiFallback({
+      rewrites: [
+        {
+          // serve static tests
+          from: /\/test\/$/,
+          to: function(context) {
+            return context.parsedUrl.pathname + 'index.html';
+          }
+        }
+      ]
+    }) ],
     "serveStatic": [
         'public',
         './'
