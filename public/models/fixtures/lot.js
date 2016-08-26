@@ -42,6 +42,7 @@ fixture({
     }
     return resp;
   },
+  'GET /api/lots': store.findAll,
   'GET /api/lots/{id}': store.findOne,
   'POST /api/lots': store.create,
   'PUT /api/lots/{id}': store.update,
