@@ -29,7 +29,6 @@ module.exports = {
           // serve static tests
           from: /\/test\/$/,
           to: function(context) {
-            console.log(context.parsedUrl.pathname);
             return context.parsedUrl.pathname + 'index.html';
           }
         }
