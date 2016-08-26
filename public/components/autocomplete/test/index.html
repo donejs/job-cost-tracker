@@ -1,19 +1,6 @@
-<title>job-tracker/components/autocomplete</title>
-<div id="mocha"></div>
-
-<link rel="stylesheet" href="../../../../node_modules/mocha/mocha.css"></link>
-
-<script src="../../../../node_modules/mocha/mocha.js"></script>
-<script src="../../../../node_modules/chai/chai.js"></script>
-<script src="../../../../node_modules/steal/steal.js" main="@empty"></script>
-
-<script>mocha.setup('bdd')</script>
-<script>
-	steal(
-        'components/autocomplete/test/unit.js',
-	    'components/autocomplete/test/functional.js',
-	    function() {
-		    mocha.run();
-	    }
-    );
+<script>FuncUnit = { frameMode: true };</script>
+<script src="/node_modules/steal/steal.js" main="@empty" mocha="bdd">
+import 'job-tracker/components/autocomplete/test/unit.js';
+import 'job-tracker/components/autocomplete/test/functional.js';
 </script>
+<div id="mocha"></div>

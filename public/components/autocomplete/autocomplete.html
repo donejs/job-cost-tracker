@@ -1,52 +1,50 @@
-<script type="text/stache" can-autorender id="demo">
-  <can-import from="job-tracker/components/autocomplete/" />
-  <can-import from="job-tracker/models/job/" />
-  <can-import from="job-tracker/models/lot/" />
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link href="/node_modules/bootstrap/dist/css/bootstrap.css" media="all" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container-fluid">
+			<h2>Autocomplete Demo</h2>
 
-  <div class="container-fluid">
-	  <h2>Autocomplete Demo</h2>
+		<div class="container-fluid">
+		<h3>Text-only content</h3>
 
-	<div class="container-fluid">
-	  <h3>Text-only content</h3>
-
-<pre class="code">&ltjob-model get-list="{search=job}" class="list-group">
-  &ltautocomplete (selected)="selectedJob()" {(value)}="job" {list}="value">
-    &#123;{title}}
-  &lt/autocomplete>
+		<pre class="code">&ltjob-model get-list="{search=job}" class="list-group">
+	&ltautocomplete (selected)="selectedJob()" {(value)}="job" {list}="value">
+		&#123;{title}}
+	&lt/autocomplete>
 &lt/job-model></pre>
 
-		<p>
-			Autocomplete text value: {{job}}
-		</p>
-		{{#if lotSelected}}
-		<p>
-			Last selected:
-			{{jobSelected}}
-		</p>
-		{{/if}}
-	  	<div class="col-xs-6">
-		  	<form>
-		  		<job-model get-list="{search=job}" class="list-group">
-			  		<auto-complete {(value)}="job" {(last-selected)}="jobSelected" {list}="value">
-			  			{{name}}
-			  		</autocomplete>
-			  	</job-model>
-		  	</form>
-	  	</div>
+			<div class="col-xs-6">
+				<form>
+					<script type="text/stache" can-autorender id="demo">
+						<can-import from="job-tracker/components/autocomplete/" />
+						<auto-complete {(value)}="val" {list}="options">
+							<p>WHAT?</p>
+						</autocomplete>
+						<p>
+							Autocomplete text value: {{val}}
+						</p>
+					</script>
+				</form>
+			</div>
 	</div>
 
+<!--
 	<div class="container-fluid">
-	  <h3>HTML Content</h3>
+		<h3>HTML Content</h3>
 
 <pre class="code">&ltlot-model get-list="{search=lot}" class="list-group">
-  &ltautocomplete (selected)="selectedLot()" {(value)}="lot" {list}="value">
+	&ltautocomplete (selected)="selectedLot()" {(value)}="lot" {list}="value">
 	&ltdiv data-value>
 		&#123;{lotNumber}}
 	&lt/div>
 	&ltdiv>
 		&#123;{name}}
 	&lt/div>
-  &lt/autocomplete>
+	&lt/autocomplete>
 &lt/lot-model></pre>
 
 		<p>
@@ -58,34 +56,41 @@
 			Last selected lot Name: {{#if lotSelected.name}} {{lotSelected.name}} {{else}} No name {{/if}}
 		</p>
 		{{/if}}
-	  	<div class="col-xs-6">
-		  	<form>
-		  		<lot-model get-list="{search=lot}" class="list-group">
-			  		<auto-complete {(value)}="lot" {(last-selected)}="lotSelected" {list}="value">
-			  			<span>
-			  				#<span data-value>{{lotNumber}}</span>
-			  			</span>
-			  			{{#if name}}
-				  			<small>
-				  				<i>{{name}}</i>
-				  			</small>
-			  			{{/if}}
-			  		</autocomplete>
-			  	</lot-model>
-		  	</form>
-	  	</div>
-	  </div>
+			<div class="col-xs-6">
+				<form>
+					<script type="text/stache" can-autorender id="demo2">
+					<lot-model get-list="{search=lot}" class="list-group">
+						<auto-complete {(value)}="lot" {(last-selected)}="lotSelected" {list}="value">
+							<span>
+								#<span data-value>{{lotNumber}}</span>
+							</span>
+							{{#if name}}
+								<small>
+									<i>{{name}}</i>
+								</small>
+							{{/if}}
+						</autocomplete>
+					</lot-model>
+					</script>
+				</form>
+			</div>
+		</div>
 	</div>
-  </div>
-</script>
+	</div>
+-->
 
 <script src="/node_modules/steal/steal.js" main="can-view-autorender">
-  import viewModel from 'can-view-model';
-  import $ from 'jquery';
-  const vm = viewModel($("#demo")[0]);
-  window.vm = vm;
-  vm.attr("job", '');
-  vm.attr("lot", '');
-  vm.attr("jobSelected", '');
-  vm.attr("lotSelected", '');
+	import viewModel from 'can-view-model';
+
+	// import $ from 'jquery';
+	const vm = viewModel( document.querySelector("#demo") );
+	window.vm = vm;
+	vm.options = ['one', 'two', 'three', 'four'];
+	vm.val = 'one';
+	// vm.attr("job", '');
+	// vm.attr("lot", '');
+	// vm.attr("jobSelected", '');
+	// vm.attr("lotSelected", '');
 </script>
+</body>
+</html>

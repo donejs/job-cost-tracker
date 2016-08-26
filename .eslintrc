@@ -8,8 +8,8 @@
     },
     "rules": {
         "semi": 2,
-        "bdd/focus": 2,
-        "bdd/exclude": 2
+        "bdd/focus": 1,
+        "bdd/exclude": 1
     },
     "plugins": [
         "bdd"
