@@ -148,6 +148,7 @@ export default Component.extend({
   tag: 'app-nav',
   template,
   ViewModel: AppNavVM,
+	leakScope: true,
   /**
 	 * @constructor {can.Component.events} job-tracker/components/app-nav.events Events
 	 * @parent job-tracker/components/app-nav
