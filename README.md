@@ -1,5 +1,5 @@
 # job-cost-tracker
-[![Build Status](https://travis-ci.com/bitovi/jobcosttracker.svg?token=dyyk9qzTjNBWR2Yq1HxW&branch=master)](https://travis-ci.com/bitovi/jobcosttracker)
+[![Build Status](https://travis-ci.com/bitovi/jobcosttracker.svg?token=dyyk9qzTjNBWR2Yq1HxW&branch=master)](https://travis-ci.com/bitovi/jobcosttracker) [![Greenkeeper badge](https://badges.greenkeeper.io/donejs/job-cost-tracker.svg)](https://greenkeeper.io/)
 
 Prototype: http://share.bitovi.com/6RHKOA/#p=new_custom_work_order
 
